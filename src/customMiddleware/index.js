@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from "react-redux";
-import _ from 'lodash'
+import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
 
 const _eventEmitter = eventEmitter()
