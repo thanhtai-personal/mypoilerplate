@@ -12,6 +12,18 @@ const publicRoute = [
     component: HomeComponent,
     isExact: false,
     layout: {  }
+  },
+  {
+    path: '/login',
+    component: HomeComponent,
+    isExact: false,
+    layout: null
+  },
+  {
+    path: '/register',
+    component: HomeComponent,
+    isExact: false,
+    layout: null
   }
 ]
 
