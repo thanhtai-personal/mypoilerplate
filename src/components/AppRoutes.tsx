@@ -3,12 +3,13 @@ import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { requireAuth, useLayout } from '../customMiddleware'
 
-import AppComponent from './containers/home'
+// load containers with react lazy to split code.
+const HomeComponent = React.lazy(() => import('./containers/home'));
 
 const publicRoute = [
   {
     path: '/home',
-    component: AppComponent,
+    component: HomeComponent,
     isExact: false,
     layout: {  }
   }
@@ -40,7 +41,7 @@ const history = createBrowserHistory()
 const Routes = () => (
   <Router history={history}>
     <Switch>
-      <Route path="/" exact component={useLayout({ }, AppComponent)} />
+      <Route path="/" exact component={useLayout({ }, HomeComponent)} />
       {renderPublicRoute()}
       {renderPrivateRoute()}
       <Route component={() => { return (<div>not found</div>) }} />
