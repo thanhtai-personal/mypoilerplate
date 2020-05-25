@@ -13,12 +13,10 @@ const GlobalStyle = createGlobalStyle`${reset}`
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <>
-        <Provider store={store}>
-          <App />
-        </Provider>
-        <GlobalStyle />
-      </>
+      <Provider store={store}>
+        <App />
+      </Provider>
+      <GlobalStyle />
     </BrowserRouter>,
   </React.StrictMode>,
   document.getElementById('root')
