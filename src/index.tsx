@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createGlobalStyle } from 'styled-components'
 import store from './store'
-import App from './components/App'
+import AppRoute from './components/AppRoutes'
 import reset from './constants/css/reset'
 import * as serviceWorker from './serviceWorker'
 
@@ -14,7 +14,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <AppRoute />
       </Provider>
       <GlobalStyle />
     </BrowserRouter>,
