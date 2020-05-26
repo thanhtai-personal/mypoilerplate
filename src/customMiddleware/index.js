@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
+import { CircularProgress } from '@material-ui/core'
 
 const _eventEmitter = eventEmitter()
 
@@ -36,23 +37,23 @@ export const requireAuth = (ComposedComponent) => {
     // }
 
     // Otherwise render the original component
-    render() {
+    render () {
       return <ComposedComponent {...this.props} />
     }
 
   }
 
-  function mapStateToProps() {
+  function mapStateToProps () {
     return {};
   }
-  
-  return connect(mapStateToProps, { })(RequireAuthComponent)
+
+  return connect(mapStateToProps, {})(RequireAuthComponent)
 
 }
 
 export const useLayout = (Layout, ComposedComponent) => {
   class UseHeaderComponent extends React.PureComponent {
-    render() {
+    render () {
       return (
         < React.Fragment >
           {Layout.header && <Layout.header />}
@@ -74,8 +75,19 @@ export const withEventEmitter = (ComposedComponent) => {
       return <ComposedComponent
         eventEmitter={_eventEmitter}
         {...this.props}
-    />
+      />
     }
-  } 
+  }
   return WithEventComponent
+}
+
+export const makeSuspenseComponent = (ComposedComponent) => {
+  const SuspenseComponent = (props) => {
+    return (
+      <Suspense fallback={<CircularProgress />}>
+        {ComposedComponent}
+      </Suspense>
+    )
+  }
+  return SuspenseComponent
 }
