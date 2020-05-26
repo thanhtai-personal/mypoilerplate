@@ -1,27 +1,34 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { requireAuth, useLayout } from '../customMiddleware'
+import { CircularProgress } from '@material-ui/core'
 
 // load containers with react lazy to split code.
-const HomeComponent = React.lazy(() => import('./containers/home'));
+const HomeComponent = React.lazy(() => import('../containers/home'));
+
+const DefaultComponent = () => {
+  return <Suspense fallback={<CircularProgress />}>
+    <HomeComponent />
+  </Suspense>
+}
 
 const publicRoute = [
   {
     path: '/home',
-    component: HomeComponent,
+    component: (props) => (<Suspense fallback={<CircularProgress />}><HomeComponent {...props}/></Suspense>),
     isExact: false,
     layout: {  }
   },
   {
     path: '/login',
-    component: HomeComponent,
+    component: (props) => (<Suspense fallback={<CircularProgress />}><HomeComponent {...props}/></Suspense>),
     isExact: false,
     layout: null
   },
   {
     path: '/register',
-    component: HomeComponent,
+    component: (props) => (<Suspense fallback={<CircularProgress />}><HomeComponent {...props}/></Suspense>),
     isExact: false,
     layout: null
   }
@@ -53,7 +60,7 @@ const history = createBrowserHistory()
 const Routes = () => (
   <Router history={history}>
     <Switch>
-      <Route path="/" exact component={useLayout({ }, HomeComponent)} />
+      <Route path="/" exact component={useLayout({ }, DefaultComponent)} />
       {renderPublicRoute()}
       {renderPrivateRoute()}
       <Route component={() => { return (<div>not found</div>) }} />
