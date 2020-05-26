@@ -5,6 +5,7 @@ import { requireAuth, useLayout, makeSuspenseComponent } from '../customMiddlewa
 
 // load containers with react lazy to split code.
 const HomeComponent = React.lazy(() => import('../containers/home'));
+const LoginComponent = React.lazy(() => import('../containers/login'));
 
 const publicRoute = [
   {
@@ -15,7 +16,7 @@ const publicRoute = [
   },
   {
     path: '/login',
-    component: makeSuspenseComponent(<HomeComponent />),
+    component: makeSuspenseComponent(<LoginComponent />),
     isExact: false,
     layout: null
   },
