@@ -3,28 +3,29 @@ import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { requireAuth, useLayout, makeSuspenseComponent } from '../customMiddleware'
 
+import HeaderComponent from '../components/layouts/header'
 // load containers with react lazy to split code.
-const HomeComponent = React.lazy(() => import('../containers/home'));
-const LoginComponent = React.lazy(() => import('../containers/login'));
+const HomeComponent = React.lazy(() => import('../containers/home'))
+const LoginComponent = React.lazy(() => import('../containers/login'))
 
 const publicRoute = [
   {
     path: '/home',
     component: makeSuspenseComponent(<HomeComponent />),
     isExact: false,
-    layout: {  }
+    layout: { header: HeaderComponent  } 
   },
   {
     path: '/login',
     component: makeSuspenseComponent(<LoginComponent />),
     isExact: false,
-    layout: null
+    layout: { header: HeaderComponent  } 
   },
   {
     path: '/register',
     component: makeSuspenseComponent(<HomeComponent />),
     isExact: false,
-    layout: null
+    layout: { header: HeaderComponent  } 
   }
 ]
 
@@ -33,7 +34,7 @@ const privateRoute = [
     path: '/dashboard',
     component: () => <div>test</div>,
     isExact: false,
-    layout: {  } //{ header: Header, footer: Footer }
+    layout: { header: HeaderComponent  } //{ header: Header, footer: Footer }
   }
 ]
 
