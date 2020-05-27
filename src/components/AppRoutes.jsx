@@ -2,6 +2,7 @@ import React from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { requireAuth, useLayout, makeSuspenseComponent } from '../customMiddleware'
+import appRoutesPath from './../constants/appRoutes'
 
 import HeaderComponent from '../components/layouts/header'
 // load containers with react lazy to split code.
@@ -10,28 +11,28 @@ const LoginComponent = React.lazy(() => import('../containers/login'))
 
 const publicRoute = [
   {
-    path: '/home',
+    path: appRoutesPath.home,
     component: makeSuspenseComponent(<HomeComponent />),
     isExact: false,
     layout: { header: HeaderComponent  } 
   },
   {
-    path: '/login',
+    path: appRoutesPath.login,
     component: makeSuspenseComponent(<LoginComponent />),
     isExact: false,
-    layout: { header: HeaderComponent  } 
+    layout: {  } 
   },
   {
-    path: '/register',
+    path: appRoutesPath.register,
     component: makeSuspenseComponent(<HomeComponent />),
     isExact: false,
-    layout: { header: HeaderComponent  } 
+    layout: {  } 
   }
 ]
 
 const privateRoute = [
   {
-    path: '/dashboard',
+    path: appRoutesPath.dashboard,
     component: () => <div>test</div>,
     isExact: false,
     layout: { header: HeaderComponent  } //{ header: Header, footer: Footer }
@@ -55,7 +56,7 @@ const history = createBrowserHistory()
 const Routes = () => (
   <Router history={history}>
     <Switch>
-      <Route path="/" exact component={useLayout({ }, makeSuspenseComponent(<HomeComponent />))} />
+      <Route path="/" exact component={useLayout({ header: HeaderComponent }, makeSuspenseComponent(<HomeComponent />))} />
       {renderPublicRoute()}
       {renderPrivateRoute()}
       <Route component={() => { return (<div>not found</div>) }} />

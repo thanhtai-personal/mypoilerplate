@@ -1,0 +1,16 @@
+{
+  "loginContainer": {
+    "login": "Login",
+    "userName": "User name",
+    "password": "Password"
+  },
+  "registerContainer": {
+    "register": "Register",
+    "userName": "User name",
+    "password": "Password",
+    "fullName": "Full name"
+  },
+  "headerComponent": {
+    "login": "Login"
+  }
+}
