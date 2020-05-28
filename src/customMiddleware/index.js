@@ -4,39 +4,20 @@ import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
 import en from './../constants/languages/en.json'
 import lanuageConfig from './../constants/languages'
+import {
+  VERIFY_TOKEN
+} from './../constants/actionTypes'
 
 const _eventEmitter = eventEmitter()
 
 export const requireAuth = (ComposedComponent) => {
   class RequireAuthComponent extends React.PureComponent {
     // Push to login route if not authenticated on mount
-
-    // getToken() {
-    //   return window.localStorage.getItem('jwtToken');
-    // }
-
-    // componentWillMount() {
-    //   if (_.isNil(this.getToken())) {
-    //     this.props.history.push('/login')
-    //   } else {
-    //     this.props.getAuthData()
-    //   }
-    // }
-
-    // componentDidUpdate() {
-    //   let { isRedirect, from, to, updateRedirectData } = this.props
-    //   if (isRedirect && from === window.location.pathname) {
-    //     updateRedirectData()
-    //     this.props.history.push(to)
-    //   }
-    // }
-
-    // // Push to login route if not authenticated on update
-    // componentWillUpdate(nextProps) {
-    //   if (_.isNil(this.getToken())) {
-    //     this.props.history.push('/login')
-    //   }
-    // }
+    componentWillMount() {
+      this.props.verifyToken(() => {
+        this.props.history.push('/login')
+      })
+    }
 
     // Otherwise render the original component
     render () {
@@ -45,11 +26,17 @@ export const requireAuth = (ComposedComponent) => {
 
   }
 
-  function mapStateToProps () {
+  const mapStateToProps = (state) => {
     return {};
   }
 
-  return connect(mapStateToProps, {})(RequireAuthComponent)
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      verifyToken: () => dispatch(VERIFY_TOKEN)
+    }
+  }
+
+  return connect(mapStateToProps, mapDispatchToProps)(RequireAuthComponent)
 
 }
 
