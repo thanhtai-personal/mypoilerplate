@@ -18,13 +18,16 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 interface HeaderProps {
-  history: any
+  history: any,
+  lang: any
 }
 
 const Header = (props: HeaderProps) => {
   const classes = useStyles()
+  const { lang, history } = props
+  const text = lang?.headerComponent
   const onClickLogin = () => {
-    props.history?.push('/login')
+    history?.push('/login')
   }
   return (
     <div className={classes.root}>
@@ -36,7 +39,7 @@ const Header = (props: HeaderProps) => {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit" onClick={onClickLogin}>Login</Button>
+          <Button color="inherit" onClick={onClickLogin}>{text?.login}</Button>
         </Toolbar>
       </AppBar>
     </div>

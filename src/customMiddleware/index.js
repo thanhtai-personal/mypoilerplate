@@ -1,7 +1,7 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
+import { CircularProgress } from '@material-ui/core'
 import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
-import { CircularProgress } from '@material-ui/core'
 import en from './../constants/languages/en.json'
 import lanuageConfig from './../constants/languages'
 
@@ -54,21 +54,18 @@ export const requireAuth = (ComposedComponent) => {
 }
 
 export const useLayout = (Layout, ComposedComponent) => {
-  class UseHeaderComponent extends React.PureComponent {
+  class UseLayoutComponent extends React.PureComponent {
     render () {
       return (
         < React.Fragment >
-          {Layout.header && <Layout.header history={this.props.history}/>}
+          {Layout.header && <Layout.header history={this.props.history} lang={this.props.lang}/>}
           <ComposedComponent {...this.props} />
           {Layout.footer && <Layout.footer />}
         </React.Fragment >
       )
     }
-
   }
-
-  return UseHeaderComponent
-
+  return UseLayoutComponent
 }
 
 export const withEventEmitter = (ComposedComponent) => {
@@ -83,28 +80,28 @@ export const withEventEmitter = (ComposedComponent) => {
   return WithEventComponent
 }
 
-export const makeSuspenseComponent = (ComposedComponent) => {
-  const SuspenseComponent = (props) => {
-    return (
-      <Suspense fallback={<CircularProgress />}>
-        {ComposedComponent}
-      </Suspense>
-    )
-  }
-
-  return SuspenseComponent
-}
-
 export const useLocalization = (ComposedComponent) => {
   const LocalizedComponent = (props) => {
     const [language, setLanguage] = useState(en)
     useEffect(() => {
-      setLanguage(lanuageConfig.find((lang) => lang.test?.match(window.location.href))?.value || en)
+      setLanguage(lanuageConfig.find((lang) => lang.test?.test(window.location.href))?.value || en)
     }, [])
     return (
-      <ComposedComponent lang={language} setLanguage={setLanguage}/>
+      <ComposedComponent lang={language} setLanguage={setLanguage} {...props}/>
     )
   }
   
   return LocalizedComponent
+}
+
+
+export const makeSuspenseComponent = (ComposedComponent) => {
+  const SuspenseComponent = (props) => {
+    return (
+      <Suspense fallback={<CircularProgress />}>
+        <ComposedComponent {...props}/>
+      </Suspense>
+    )
+  }
+  return SuspenseComponent
 }

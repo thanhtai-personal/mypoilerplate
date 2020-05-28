@@ -4,10 +4,10 @@ import vi from './vi.json'
 export default [
   {
     test: languageKeyEnRegex,
-    value: JSON.parse(en)
+    value: en
   },
   {
     test: languageKeyViRegex,
-    value: JSON.parse(vi)
+    value: vi
   }
 ]
