@@ -1,4 +1,4 @@
-export default config = {
+export default {
   // `url` is the server URL that will be used for the request
   url: '',
  
@@ -36,9 +36,9 @@ export default config = {
  
   // `paramsSerializer` is an optional function in charge of serializing `params`
   // (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)
-  paramsSerializer: function (params) {
-    return Qs.stringify(params, {arrayFormat: 'brackets'})
-  },
+  // paramsSerializer: function (params) {
+  //   return Qs.stringify(params, {arrayFormat: 'brackets'})
+  // },
  
   // `data` is the data to be sent as the request body
   // Only applicable for request methods 'PUT', 'POST', and 'PATCH'
@@ -123,8 +123,8 @@ export default config = {
   // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
   // and https requests, respectively, in node.js. This allows options to be added like
   // `keepAlive` that are not enabled by default.
-  httpAgent: new http.Agent({ keepAlive: true }),
-  httpsAgent: new https.Agent({ keepAlive: true }),
+  // httpAgent: new http.Agent({ keepAlive: true }),
+  // httpsAgent: new https.Agent({ keepAlive: true }),
  
   // 'proxy' defines the hostname and port of the proxy server.
   // You can also define your proxy using the conventional `http_proxy` and
@@ -147,6 +147,6 @@ export default config = {
  
   // `cancelToken` specifies a cancel token that can be used to cancel the request
   // (see Cancellation section below for details)
-  cancelToken: new CancelToken(function (cancel) {
-  })
+  // cancelToken: new CancelToken(function (cancel) {
+  // })
 }

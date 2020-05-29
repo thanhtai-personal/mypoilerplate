@@ -45,7 +45,8 @@ interface LoginProps {
 const LoginComponent = (props: LoginProps) => {
   const classes = useStyles()
   const { text = {}, login, updateUserName, updatePassword, userName, password } = props
-  const submitLogin = () => {
+  const submitLogin = (event: any) => {
+    event.preventDefault()
     typeof login === 'function' && login()
   }
 
@@ -78,8 +79,8 @@ const LoginComponent = (props: LoginProps) => {
             id='email'
             label={text.email}
             name='email'
-            autoComplete='email'
             autoFocus
+            autoComplete={'true'}
             onChange={onChangeEmail}
             defaultValue={userName}
           />
@@ -92,13 +93,12 @@ const LoginComponent = (props: LoginProps) => {
             label={text.password}
             type='password'
             id='password'
-            autoComplete='current-password'
             onChange={onChangePassword}
+            autoComplete={'true'}
             defaultValue={password}
           />
           <Button
-            type='submit'
-            onSubmit={submitLogin}
+            onClick={submitLogin}
             fullWidth
             variant='contained'
             color='primary'
