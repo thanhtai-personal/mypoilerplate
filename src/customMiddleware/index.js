@@ -5,7 +5,7 @@ import eventEmitter from 'event-emitter'
 import en from './../constants/languages/en.json'
 import lanuageConfig from './../constants/languages'
 import {
-  VERIFY_TOKEN
+  LOGIN
 } from './../constants/actionTypes'
 
 const _eventEmitter = eventEmitter()
@@ -13,14 +13,21 @@ const _eventEmitter = eventEmitter()
 export const requireAuth = (ComposedComponent) => {
   class RequireAuthComponent extends React.PureComponent {
     // Push to login route if not authenticated on mount
+
+    getToken() {
+      return window.localStorage.getItem('jwtToken');
+    }
+
     componentWillMount() {
-      this.props.verifyToken(() => {
+      if (!this.getToken()) {
         this.props.history.push('/login')
-      })
+      } else {
+        this.props.login()
+      }
     }
 
     // Otherwise render the original component
-    render () {
+    render() {
       return <ComposedComponent {...this.props} />
     }
 
@@ -32,7 +39,7 @@ export const requireAuth = (ComposedComponent) => {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      verifyToken: () => dispatch(VERIFY_TOKEN)
+      login: () => dispatch(LOGIN)
     }
   }
 

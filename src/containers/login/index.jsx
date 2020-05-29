@@ -2,13 +2,15 @@ import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
 import LoginComponent from '../../components/login'
-import { UPDATE_USER_NAME, UPDATE_PASSWORD } from '../../constants/actionTypes'
+import { UPDATE_USER_NAME, UPDATE_PASSWORD, LOGIN } from '../../constants/actionTypes'
 
 class LoginContainer extends React.PureComponent {
   render() {
     const { props: { userName, password,
       updateUserName,
-      updatePassword
+      updatePassword,
+      lang,
+      login
     } } = this
     return (
       <Container maxWidth='xl'>
@@ -17,6 +19,8 @@ class LoginContainer extends React.PureComponent {
           password={password}
           updateUserName={updateUserName}
           updatePassword={updatePassword}
+          text={lang.loginContainer}
+          login={login}
         />
       </Container>)
   }
@@ -31,7 +35,8 @@ const mapStateToProps = ({ login = {} }, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   updateUserName: () => dispatch({ type: UPDATE_USER_NAME }),
-  updatePassword: () => dispatch({ type: UPDATE_PASSWORD })
+  updatePassword: () => dispatch({ type: UPDATE_PASSWORD }),
+  login: () => dispatch({ type: LOGIN }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

@@ -8,7 +8,7 @@ export default config = {
   // `baseURL` will be prepended to `url` unless `url` is absolute.
   // It can be convenient to set `baseURL` for an instance of axios to pass relative URLs
   // to methods of that instance.
-  baseURL: 'https://localhost:3000/api/',
+  baseURL: 'https://tttgalaxy-server-expressjs.herokuapp.com/api/',
  
   // `transformRequest` allows changes to the request data before it is sent to the server
   // This is only applicable for request methods 'PUT', 'POST', 'PATCH' and 'DELETE'

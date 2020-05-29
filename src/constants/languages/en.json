@@ -1,8 +1,11 @@
 {
   "loginContainer": {
-    "login": "Login",
+    "login": "Sign in",
     "userName": "User name",
-    "password": "Password"
+    "password": "Password",
+    "email": "Email Address",
+    "forgot": "Forgot password?",
+    "dontHaveAccount": "Don't have an account? Sign Up"
   },
   "registerContainer": {
     "register": "Register",
