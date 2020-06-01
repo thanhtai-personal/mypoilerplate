@@ -36,28 +36,25 @@ const useStyles = makeStyles((theme) => ({
 interface LoginProps {
   userName: String,
   password: String,
-  updateUserName: any,
-  updatePassword: any,
+  updateLoginData: any,
   text: any,
   login: any
 }
 
 const LoginComponent = (props: LoginProps) => {
   const classes = useStyles()
-  const { text = {}, login, updateUserName, updatePassword, userName, password } = props
+  const { text = {}, login, updateLoginData, userName, password } = props
   const submitLogin = (event: any) => {
     event.preventDefault()
     typeof login === 'function' && login()
   }
 
-  const onChangeEmail = (data: any) => {
-    typeof updateUserName === 'function' && updateUserName(data.value)
-    return true
+  const onChangeEmail = (e: any) => {
+    typeof updateLoginData === 'function' && updateLoginData({ path: 'userName', value: e?.currentTarget?.value })
   }
-  
-  const onChangePassword = (data: any) => {
-    typeof updatePassword === 'function' && updatePassword(data.value)
-    return true
+
+  const onChangePassword = (e: any) => {
+    typeof updateLoginData === 'function' && updateLoginData({ path: 'password', value: e?.currentTarget?.value })
   }
 
   return (

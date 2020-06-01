@@ -1,7 +1,19 @@
-//login
-export const UPDATE_USER_NAME = 'UPDATE_USER_NAME'
-export const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
+import { createAsyncTypes } from './utilities'
+const actionType = {
+  //login
+  UPDATE_LOGIN_DATA: 'UPDATE_LOGIN_DATA',
 
-//auth
-export const VERIFY_TOKEN = 'VERIFY_TOKEN'
-export const LOGIN = 'LOGIN'
+  //register
+  UPDATE_REGISTER_DATA: 'UPDATE_REGISTER_DATA',
+
+  //auth
+  UPDATE_USER_DATA: 'UPDATE_USER_DATA',
+  LOGIN: 'LOGIN',
+  REGISTER: 'REGISTER'
+}
+
+Object.keys(actionType).map((key) => {
+  actionType[key] = createAsyncTypes(actionType[key])
+})
+
+export default actionType

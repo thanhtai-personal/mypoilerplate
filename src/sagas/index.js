@@ -1,19 +1,14 @@
-import { all, spawn, call } from 'redux-saga/effects'
+import { all } from 'redux-saga/effects'
 import authSagas from './auth'
+import loginSagas from './login'
+import registerSagas from './register'
 
 
-export default function* rootSaga () {
-  const listSagas = [ ...authSagas ]
-  yield all(listSagas.map(saga =>
-    spawn(function* () {
-      while (true) {
-        try {
-          yield call(saga)
-          break
-        } catch (e) {
-          console.error(e)
-        }
-      }
-    }))
-  );
+export default function* rootSaga() {
+  const listSagas = [
+    authSagas,
+    loginSagas,
+    registerSagas
+  ]
+  yield all(listSagas.map((saga) => saga()))
 }

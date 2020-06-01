@@ -1,17 +1,17 @@
 import initialState from './initialsState'
 import actionType from './../constants/actionTypes'
 
-export default (state = initialState.login, action) => {
+export default (state = initialState.auth, action) => {
   switch (action.type) {
-    case actionType.UPDATE_REGISTER_DATA.SUCCESS:
+    case actionType.UPDATE_USER_DATA.SUCCESS:
       return {
         ...state,
-        userName: action.payload
+        ...action.payload
       }
-    case actionType.UPDATE_REGISTER_DATA.FAILED:
+    case actionType.UPDATE_USER_DATA.FAILED:
       return {
         ...state,
-        password: action.payload
+        ...action.payload
       }
     default:
       return state

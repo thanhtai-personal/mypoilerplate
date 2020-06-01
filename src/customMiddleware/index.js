@@ -4,9 +4,7 @@ import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
 import en from './../constants/languages/en.json'
 import lanuageConfig from './../constants/languages'
-import {
-  LOGIN
-} from './../constants/actionTypes'
+import actionType from './../constants/actionTypes'
 
 const _eventEmitter = eventEmitter()
 
@@ -39,7 +37,7 @@ export const requireAuth = (ComposedComponent) => {
 
   const mapDispatchToProps = (dispatch) => {
     return {
-      login: () => dispatch(LOGIN)
+      login: () => dispatch(actionType.LOGIN.PENDING)
     }
   }
 
