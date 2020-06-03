@@ -63,9 +63,9 @@ export default {
  
   // `adapter` allows custom handling of requests which makes testing easier.
   // Return a promise and supply a valid response (see lib/adapters/README.md).
-  adapter: function (config) {
-    /* ... */
-  },
+  // adapter: function (config) {
+  //   /* ... */
+  // },
  
   // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.
   // This will set an `Authorization` header, overwriting any existing

@@ -1,7 +1,7 @@
 const asyncTypes = {
   PENDING: 'PENDING',
   SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR'
+  FAILED: 'FAILED'
 }
 
 export const createAsyncTypes = (typeString) =>

@@ -7,23 +7,21 @@ let config = devConfig
 if (process.env.NODE_ENV === 'production') {
   config = prdConfig
 }
+const apiInstant = axios.create(config)
 
-const apis = {
-  auth: authApi
+const makeRequest = (apiConfig) => {
+  return (data) => apiInstant[apiConfig.method || 'get'](apiConfig.url, data || null)
 }
 
-let apiService = {}
-Object.keys(apis).forEach((scene) => {
-  apiService[scene] = {}
-  Object.keys(apis[scene]).forEach((apiName) => {
-    apiService[scene][apiName] = (_data) => {
-      let data = apis[scene][apiName](_data)
-      return axios({ ...config, ...data })
-    }
+const makeApiService = (apiObject) => {
+  let _apis = {}
+  Object.keys(apiObject).forEach((key) => {
+    _apis[key] = makeRequest(apiObject[key])
   })
-})
-
+  return _apis 
+}
 //yield apiSercive.auth.login(data)
 
-
-export default apiService
+export default {
+  auth: makeApiService(authApi)
+}

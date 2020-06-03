@@ -1,9 +1,8 @@
 
-const login = (data) => ({
+const login = {
   method: 'post',
-  url: 'auth/login',
-  data: data
-})
+  url: 'auth/login'
+}
 
 export default {
   login

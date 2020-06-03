@@ -1,26 +1,20 @@
-
-
-import apiInstant from '../apis'
-import store from '../store'
-import { put, takeLatest, all } from 'redux-saga/effects'
+import apiService from '../apis'
+import { put, takeLatest, all, call } from 'redux-saga/effects'
 import actionType from '../constants/actionTypes'
 
-function* login() {
-  let dataLogin = store.getState().login
+function* login(dataLogin) {
   try {
-    const dataResponse = yield apiInstant.login(dataLogin)
-    .then(response => response )
+    const dataResponse = yield apiService.auth?.login(dataLogin).then(response => response)
+    window.localStorage.setItem('jwtToken', dataResponse)
     yield put({ type: actionType.UPDATE_USER_DATA.PENDING, payload: dataResponse });
   } catch(error) {
     yield put({ type: actionType.LOGIN.FAILED, payload: { error: error } })
   } 
 }
 
-function* register() {
-  let dataRegister = store.getState().register
+function* register(dataRegister) {
   try {
-    const dataResponse = yield apiInstant.register(dataRegister)
-    .then(response => response )
+    const dataResponse = yield call(() => apiService.register(dataRegister))
     yield put({ type: actionType.UPDATE_USER_DATA.PENDING, payload: dataResponse });
   } catch(error) {
     yield put({ type: actionType.REGISTER.FAILED, payload: { error: error } })
