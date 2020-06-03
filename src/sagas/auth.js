@@ -2,9 +2,9 @@ import apiService from '../apis'
 import { put, takeLatest, all, call } from 'redux-saga/effects'
 import actionType from '../constants/actionTypes'
 
-function* login(dataLogin) {
+function* login(data) {
   try {
-    const dataResponse = yield apiService.auth?.login(dataLogin).then(response => response)
+    const dataResponse = yield apiService.auth?.login(data.data).then(response => response)
     window.localStorage.setItem('jwtToken', dataResponse)
     yield put({ type: actionType.UPDATE_USER_DATA.PENDING, payload: dataResponse });
   } catch(error) {

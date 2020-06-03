@@ -1,7 +1,8 @@
 import actionType from './../constants/actionTypes'
 
-export const login = () => {
+export const login = (data) => {
   return ({
-    type: actionType.LOGIN.PENDING
+    type: actionType.LOGIN.PENDING,
+    data
   })
 }

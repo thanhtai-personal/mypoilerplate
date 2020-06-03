@@ -46,7 +46,7 @@ const LoginComponent = (props: LoginProps) => {
   const { text = {}, login, updateLoginData, userName, password } = props
   const submitLogin = (event: any) => {
     event.preventDefault()
-    typeof login === 'function' && login()
+    typeof login === 'function' && login({ email: userName, password: password })
   }
 
   const onChangeEmail = (e: any) => {

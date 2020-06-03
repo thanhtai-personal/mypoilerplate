@@ -28,7 +28,12 @@ export default {
   }],
  
   // `headers` are custom headers to be sent
-  headers: {'X-Requested-With': 'XMLHttpRequest'},
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true
+  },
  
   // `params` are the URL parameters to be sent with the request
   // Must be a plain object or a URLSearchParams object
