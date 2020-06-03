@@ -4,7 +4,7 @@ import actionType from '../constants/actionTypes'
 
 function* updateRegisterData(data) {
   try {
-    yield put({ type: actionType.UPDATE_REGISTER_DATA.SUCCESS, payload: data });
+    yield put({ type: actionType.UPDATE_REGISTER_DATA.SUCCESS, data: data.payload });
   } catch(error) {
     yield put({ type: actionType.UPDATE_REGISTER_DATA.FAILED, payload: { error: error } })
   } 

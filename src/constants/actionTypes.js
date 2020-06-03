@@ -12,7 +12,7 @@ const actionType = {
   REGISTER: 'REGISTER'
 }
 
-Object.keys(actionType).map((key) => {
+Object.keys(actionType).forEach((key) => {
   actionType[key] = createAsyncTypes(actionType[key])
 })
 

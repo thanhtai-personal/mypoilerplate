@@ -29,6 +29,9 @@ const Header = (props: HeaderProps) => {
   const onClickLogin = () => {
     history?.push('/login')
   }
+  const onClickRegister = () => {
+    history?.push('/register')
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -40,6 +43,7 @@ const Header = (props: HeaderProps) => {
             News
           </Typography>
           <Button color="inherit" onClick={onClickLogin}>{text?.login}</Button>
+          <Button color="inherit" onClick={onClickRegister}>{text?.register}</Button>
         </Toolbar>
       </AppBar>
     </div>

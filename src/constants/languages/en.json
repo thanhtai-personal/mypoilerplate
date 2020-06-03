@@ -8,12 +8,15 @@
     "dontHaveAccount": "Don't have an account? Sign Up"
   },
   "registerContainer": {
-    "register": "Register",
+    "register": "Signup",
     "userName": "User name",
     "password": "Password",
-    "fullName": "Full name"
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "readyHaveAccount": "Already have an account? Sign in"
   },
   "headerComponent": {
-    "login": "Login"
+    "login": "Login",
+    "register": "Signup"
   }
 }

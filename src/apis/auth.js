@@ -4,6 +4,12 @@ const login = {
   url: 'auth/login'
 }
 
+const register = {
+  method: 'post',
+  url: 'auth/register'
+}
+
 export default {
-  login
+  login,
+  register
 }

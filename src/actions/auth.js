@@ -6,3 +6,10 @@ export const login = (data) => {
     data
   })
 }
+
+export const register = (data) => {
+  return ({
+    type: actionType.REGISTER.PENDING,
+    data
+  })
+}

@@ -1,5 +1,5 @@
 import apiService from '../apis'
-import { put, takeLatest, all, call } from 'redux-saga/effects'
+import { put, takeLatest, all } from 'redux-saga/effects'
 import actionType from '../constants/actionTypes'
 
 function* login(data) {
@@ -12,14 +12,16 @@ function* login(data) {
   } 
 }
 
-function* register(dataRegister) {
+function* register(data) {
   try {
-    const dataResponse = yield call(() => apiService.register(dataRegister))
-    yield put({ type: actionType.UPDATE_USER_DATA.PENDING, payload: dataResponse });
+    const dataResponse = yield apiService.auth?.register(data.data).then(response => response)
+    window.localStorage.setItem('jwtToken', dataResponse?.token)
+    yield put({ type: actionType.UPDATE_REGISTER_DATA.PENDING, payload: dataResponse });
   } catch(error) {
     yield put({ type: actionType.REGISTER.FAILED, payload: { error: error } })
-  }
+  } 
 }
+
 
 function* updateUserData(data) {
   try {
