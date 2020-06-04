@@ -1,7 +1,10 @@
-import initialState from './initialsState'
-import actionType from './../constants/actionTypes'
+import actionType from '../actionTypes'
 
-export default (state = initialState.auth, action) => {
+const initialState = {
+
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case actionType.UPDATE_USER_DATA.SUCCESS:
       return {

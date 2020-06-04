@@ -1,4 +1,4 @@
-import actionType from './../constants/actionTypes'
+import actionType from '../actionTypes'
 
 export const updateRegisterData = (data) => {
   let payload = {

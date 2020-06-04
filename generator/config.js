@@ -1,17 +1,27 @@
-const moduleName = {
-  authentication: 'Authentication'
-}
+const features = require('./modules')
+const { authenFeature } = features
 const generatorConfig = {
   newProjectPath: 'D://generatedReactProjects',
-  module: [
-    moduleName.authentication
-  ],
   newProjectName: 'testGenerator',
-  listCopyDir: [
-    'config', 'public', 'scripts', 'src'
+  listFeatures: [
+    authenFeature
   ],
+  defaultSource: {
+    apis: ['devConfig.js', 'index.js', 'prodConfig.js'],
+    components: ['layouts', 'AppRoutes.jsx'],
+    containers: ['home'],
+    customMiddleware: ['index.js'],
+    reducers: ['index.js'],
+    sagas: ['index.js'],
+    store: ['index.js', 'store.dev.js','store.prod.js'],
+    files: ['App.css', 'index.css', 'index.jsx', 'logo.svg', 'react-app-env.d.ts', 'serviceWorker.ts', 'setupTests.ts'],
+    constants: ['css', 'languages', 'utilities', 'constants.js'],
+    actionTypes: ['index.js'],
+    appRoutes: ['index.js'],
+  },
+  sourcePath: 'src',
   listCopyFile: [
-    'package.json', 'tsconfig.json', '.gitignore'
+    'config', 'public', 'scripts', 'package.json', 'tsconfig.json', '.gitignore'
   ]
 }
 

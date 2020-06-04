@@ -1,7 +1,13 @@
-import initialState from './initialsState'
-import actionType from './../constants/actionTypes'
+import actionType from '../actionTypes'
 
-export default (state = initialState.register, action) => {
+const initialState = {
+  userName: '',
+  password: '',
+  firstName: '',
+  lastName: ''
+}
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case actionType.UPDATE_REGISTER_DATA.SUCCESS:
     case actionType.UPDATE_REGISTER_DATA.FAILED:

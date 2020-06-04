@@ -1,6 +1,6 @@
 
 import { put, takeLatest, all } from 'redux-saga/effects'
-import actionType from '../constants/actionTypes'
+import actionType from '../actionTypes'
 
 function* updateRegisterData(data) {
   try {

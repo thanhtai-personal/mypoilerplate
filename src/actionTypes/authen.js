@@ -1,5 +1,4 @@
-import { createAsyncTypes } from './utilities'
-const actionType = {
+export default {
   //login
   UPDATE_LOGIN_DATA: 'UPDATE_LOGIN_DATA',
 
@@ -11,9 +10,3 @@ const actionType = {
   LOGIN: 'LOGIN',
   REGISTER: 'REGISTER'
 }
-
-Object.keys(actionType).forEach((key) => {
-  actionType[key] = createAsyncTypes(actionType[key])
-})
-
-export default actionType

@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { requireAuth, useLayout, useLocalization, makeSuspenseComponent } from '../customMiddleware'
-import appRoutesPath from './../constants/appRoutes'
+import appRoutesPath from './../appRoutes'
 
 import HeaderComponent from '../components/layouts/header'
 // load containers with react lazy to split code.

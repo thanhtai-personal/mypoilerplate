@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
 import en from './../constants/languages/en.json'
 import lanuageConfig from './../constants/languages'
-import actionType from './../constants/actionTypes'
+import actionType from '../actionTypes'
 
 const _eventEmitter = eventEmitter()
 
