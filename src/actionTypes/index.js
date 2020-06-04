@@ -1,5 +1,5 @@
 import { createAsyncTypes } from '../constants/utilities'
-import authenActionTypes from './authen'
+import authenActionTypes from './auth'
 const actionType = {
   ...authenActionTypes
 }

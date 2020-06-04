@@ -9,7 +9,7 @@ const animateProgress = require('../helpers/progress')
 const addCheckMark = require('../helpers/checkmark')
 const addXMark = require('../helpers/xmark')
 const npmConfig = require('../helpers/get-npm-config')
-const config = require('../config')
+const generatorConfig = require('../config')
 
 process.stdin.resume()
 process.stdin.setEncoding('utf8')
@@ -18,18 +18,21 @@ process.stdout.write('\n')
 let interval = -1
 
 const boilerPlateSourcePath = __dirname.replace(/(generator\\scripts)|(generator\/scripts)|(generator\\scripts\\)|(generator\/scripts\/)/, '')
-process.stdout.write(`boilerPlateSourcePath: ${boilerPlateSourcePath}`)
-process.stdout.write('\n')
 
 /**
  * createNewDirectory
  */
 function createNewDirectory () {
-  shell.cd(config.newProjectPath)
-  shell.mkdir(config.newProjectName)
-  shell.cd(config.newProjectName)
+  shell.cd(generatorConfig.newProjectPath)
+  shell.mkdir(generatorConfig.newProjectName)
+  shell.cd(generatorConfig.newProjectName)
+  shell.mkdir(generatorConfig.sourcePath)
+  shell.cd(generatorConfig.sourcePath)
+  generatorConfig.lsSourceFolder.forEach((dirName) => {
+    shell.mkdir(dirName)
+  })
   shell.cd(boilerPlateSourcePath)
-  return `${config.newProjectPath}/${config.newProjectName}`
+  return `${generatorConfig.newProjectPath}/${generatorConfig.newProjectName}`
 }
 
 /**
@@ -205,15 +208,26 @@ async function copyFile(filePath, desPath) {
  */
 async function copyAFeatureSource(name, feature, desPath) {
   process.stdout.write(`\nCopying ${name} feature...\n`)
-  let _desPath = `${desPath}/${config.sourcePath}`
+
   Object.keys(feature).forEach((key) => {
     process.stdout.write(`\nCopying ${key}...\n`)
-    feature[key].forEach((fileName) => {
-      copyFile(fileName, `${_desPath}/${key}`)
-    })
-    process.stdout.write(`\nDone copying ${key}...\n`)
+    if (key === '_files') {
+      feature[key].forEach((fileName) => {
+        process.stdout.write(`\nCopy file ${generatorConfig.sourcePath}/${key}/${fileName}...\n`)
+        copyFile(`${generatorConfig.sourcePath}/${fileName}`, `${desPath}/${generatorConfig.sourcePath}`)
+        process.stdout.write(`\nDone copy file ${generatorConfig.sourcePath}/${key}/${fileName}...\n`)
+      })
+    } else {
+      feature[key].forEach((fileName) => {
+        process.stdout.write(`\nCopy file ${generatorConfig.sourcePath}/${key}/${fileName}...\n`)
+        copyFile(`${generatorConfig.sourcePath}/${key}/${fileName}`, `${desPath}/${generatorConfig.sourcePath}/${key}`)
+        process.stdout.write(`\nDone copy file ${generatorConfig.sourcePath}/${key}/${fileName}...\n`)
+      })
+    }
+    process.stdout.write(`\nDone copying ${key}.\n`)
   })
-  process.stdout.write(`Done copying ${name} feature...\n`)
+
+  process.stdout.write(`Done copying ${name} feature.\n`)
 }
 
 /**
@@ -221,19 +235,25 @@ async function copyAFeatureSource(name, feature, desPath) {
  */
 async function copyDefaultSource(destinationPath) {
   process.stdout.write('\nCopying default source...')
-
-  config.listCopyFile.forEach(filePath => {
-    process.stdout.write(`Copying ${filePath}...\n`)
-    copyFile(filePath, destinationPath)
+  generatorConfig.listCopyFile.forEach(filePath => {
+    process.stdout.write(`\nCopying ${filePath}...\n`)
+    copyFile(`${filePath}`, destinationPath)
     process.stdout.write(`Done copying ${filePath}.\n`)
   })
 
-  process.stdout.write(`Move to ${config.sourcePath}\n`)
-  shell.cd(config.sourcePath)
-  copyAFeatureSource('default', config.defaultSource)
-  shell.cd('..')
+  await copyAFeatureSource('default', generatorConfig.defaultSource, destinationPath)
 
-  process.stdout.write('Done copying default source...\n')
+  process.stdout.write('Done copying default source.\n')
+}
+
+async function copyFeaturesSource(destinationPath) {
+  process.stdout.write('\nCopying features...')
+
+  Object.keys(generatorConfig.features).forEach(async (key) => {
+    await copyAFeatureSource(key, generatorConfig.features[key], destinationPath)
+  })
+  
+  process.stdout.write('Done copying features.\n')
 }
 
 /**
@@ -242,17 +262,11 @@ async function copyDefaultSource(destinationPath) {
 async function copyData(destinationPath) {
   process.stdout.write('\nCopying data...')
   
-  copyDefaultSource(destinationPath)
+  await copyDefaultSource(destinationPath)
 
-  process.stdout.write(`\nCopying features source...`)
-  shell.cd(config.sourcePath)
-  config.listFeatures.forEach((feature) => {
-    copyAFeatureSource('feature feature', feature, destinationPath)
-  })
-  shell.cd('..')
-  process.stdout.write(`Done copying features source...\n`)
+  await copyFeaturesSource(destinationPath)
 
-  process.stdout.write('Done copy data\n')
+  process.stdout.write('Done copy data.\n')
 }
 
 /**
@@ -260,7 +274,6 @@ async function copyData(destinationPath) {
  */
 function endProcess(directory) {
   clearInterval(interval)
-
   process.stdout.write('\n')
   process.stdout.write(`Get your new source in ${directory}\n`)
   process.stdout.write(`Use 'git remote set-url origin <<your git url>>' connect your git repository.\n`)
@@ -289,16 +302,19 @@ function endProcess(directory) {
   await checkNpmVersion(requiredNpmVersion).catch(reason =>
     reportError(reason),
   )
-  const directory = await createNewDirectory()
+  const directory = createNewDirectory()
   if (directory) {
+    process.stdout.write(`Move pointer to ${boilerPlateSourcePath}\n`)
+    shell.cd(boilerPlateSourcePath)
     process.stdout.write(`Copy data from ${boilerPlateSourcePath} to ${directory}`)
     process.stdout.write('\n')
     await copyData(directory)
-    process.stdout.write(`Move pointer to ${directory}`)
-    process.stdout.write('\n')
+    
+    process.stdout.write(`Move pointer to ${directory}\n`)
     shell.cd(directory)
     await installPackages().catch(reason => reportError(reason))
     await makeNewRepo().catch(reason => reportError(reason))
+    process.stdout.write(`Move pointer to ${boilerPlateSourcePath}\n`)
     shell.cd(boilerPlateSourcePath)
   }
   endProcess(directory)

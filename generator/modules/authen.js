@@ -10,6 +10,4 @@ const authenFeature = {
   constants: ['auth.constants.js']
 }
 
-module.exports = { 
-  authenFeature
-}
+module.exports = authenFeature

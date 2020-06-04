@@ -1,11 +1,8 @@
 const features = require('./modules')
-const { authenFeature } = features
 const generatorConfig = {
   newProjectPath: 'D://generatedReactProjects',
   newProjectName: 'testGenerator',
-  listFeatures: [
-    authenFeature
-  ],
+  features,
   defaultSource: {
     apis: ['devConfig.js', 'index.js', 'prodConfig.js'],
     components: ['layouts', 'AppRoutes.jsx'],
@@ -14,7 +11,7 @@ const generatorConfig = {
     reducers: ['index.js'],
     sagas: ['index.js'],
     store: ['index.js', 'store.dev.js','store.prod.js'],
-    files: ['App.css', 'index.css', 'index.jsx', 'logo.svg', 'react-app-env.d.ts', 'serviceWorker.ts', 'setupTests.ts'],
+    _files: ['App.css', 'index.css', 'index.jsx', 'logo.svg', 'react-app-env.d.ts', 'serviceWorker.ts', 'setupTests.ts'],
     constants: ['css', 'languages', 'utilities', 'constants.js'],
     actionTypes: ['index.js'],
     appRoutes: ['index.js'],
@@ -22,7 +19,12 @@ const generatorConfig = {
   sourcePath: 'src',
   listCopyFile: [
     'config', 'public', 'scripts', 'package.json', 'tsconfig.json', '.gitignore'
+  ],
+  lsSourceFolder: [
+    'actions', 'apis', 'actionTypes',
+    'appRoutes', 'components', 'constants',
+    'containers', 'customMiddleware', 'reducers',
+    'sagas', 'store', 'test'
   ]
 }
-
 module.exports = generatorConfig
