@@ -105,12 +105,12 @@ const LoginComponent = (props: LoginProps) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href='#' variant='body2'>
+              <Link href='/forgetPassword' variant='body2'>
                 {text.forgot}
               </Link>
             </Grid>
             <Grid item>
-              <Link href='#' variant='body2'>
+              <Link href='/register' variant='body2'>
                 {text.dontHaveAccount}
               </Link>
             </Grid>
