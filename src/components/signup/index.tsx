@@ -4,11 +4,11 @@ import {
   Button,
   CssBaseline,
   TextField,
-  Link,
   Grid,
   Container,
   Typography
 } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -60,25 +60,25 @@ export default function SignUp(props: SignupProps) {
     })
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component='main' maxWidth='xs'>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component='h1' variant='h5'>
           {text.register}
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
+                autoComplete='fname'
+                name='firstName'
+                variant='outlined'
                 required
                 fullWidth
-                id="firstName"
+                id='firstName'
                 label={text.firstName}
                 defaultValue={firstName}
                 autoFocus
@@ -87,40 +87,40 @@ export default function SignUp(props: SignupProps) {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="lastName"
+                id='lastName'
                 label={text.lastName}
-                name="lastName"
-                autoComplete="lname"
+                name='lastName'
+                autoComplete='lname'
                 defaultValue={lastName}
                 onChange={(e: any) => updateRegisterData({ path: 'lastName', value: e?.currentTarget?.value })}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                id="email"
+                id='email'
                 label={text.userName}
-                name="email"
-                autoComplete="email"
+                name='email'
+                autoComplete='email'
                 defaultValue={userName}
                 onChange={(e: any) => updateRegisterData({ path: 'userName', value: e?.currentTarget?.value })}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
+                variant='outlined'
                 required
                 fullWidth
-                name="password"
+                name='password'
                 label={text.password}
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                type='password'
+                id='password'
+                autoComplete='current-password'
                 defaultValue={password}
                 onChange={(e: any) => updateRegisterData({ path: 'password', value: e?.currentTarget?.value })}
               />
@@ -128,16 +128,16 @@ export default function SignUp(props: SignupProps) {
           </Grid>
           <Button
             fullWidth
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             className={classes.submit}
             onClick={handleSubmit}
           >
             {text.register}
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify='flex-end'>
             <Grid item>
-              <Link href="/login" variant="body2">
+              <Link to='/login'>
                 {text.readyHaveAccount}
               </Link>
             </Grid>

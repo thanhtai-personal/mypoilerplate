@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     display: flex;
@@ -30,10 +31,6 @@ const Paragraph = styled.p`
     font-size: 1rem;
 `;
 
-const Link = styled.a`
-    color: #00a8e8;
-`;
-
 const App = () => (
     <Container>
         <Wrapper>
@@ -46,7 +43,7 @@ const App = () => (
             <Paragraph>The most simple and robust React boilerplate.</Paragraph>
             <Paragraph>
                 Read the article{' '}
-                <Link href='https://medium.freecodecamp.org/a-complete-react-boilerplate-tutorial-from-zero-to-hero-20023e086c4a' target='_blank'>
+                <Link to='https://medium.freecodecamp.org/a-complete-react-boilerplate-tutorial-from-zero-to-hero-20023e086c4a' target='_blank'>
                     here.
                 </Link>
             </Paragraph>

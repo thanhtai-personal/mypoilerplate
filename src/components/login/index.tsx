@@ -4,14 +4,13 @@ import {
   Button,
   CssBaseline,
   TextField,
-  Link,
   Grid,
   Typography,
   Container
 } from '@material-ui/core'
 import { LockOutlined as LockOutlinedIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
-
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -105,12 +104,12 @@ const LoginComponent = (props: LoginProps) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href='/forgetPassword' variant='body2'>
+              <Link to='/forgetPassword'>
                 {text.forgot}
               </Link>
             </Grid>
             <Grid item>
-              <Link href='/register' variant='body2'>
+              <Link to='/register'>
                 {text.dontHaveAccount}
               </Link>
             </Grid>

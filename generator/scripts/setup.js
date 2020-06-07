@@ -240,9 +240,6 @@ async function copyDefaultSource(destinationPath) {
     copyFile(`${filePath}`, destinationPath)
     process.stdout.write(`Done copying ${filePath}.\n`)
   })
-
-  await copyAFeatureSource('default', generatorConfig.defaultSource, destinationPath)
-
   process.stdout.write('Done copying default source.\n')
 }
 
