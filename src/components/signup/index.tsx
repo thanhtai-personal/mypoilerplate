@@ -1,4 +1,7 @@
 import React from 'react'
+import { updateRegisterData } from '../../actions/register'
+import { register } from '../../actions/auth'
+import { connect } from 'react-redux'
 import {
   Avatar,
   Button,
@@ -42,7 +45,10 @@ interface SignupProps {
   register: any
 }
 
-export default function SignUp(props: SignupProps) {
+interface SignupState {
+}
+
+const SignUpComponent = (props: SignupProps, state: SignupState) => {
   const classes = useStyles()
   const {
     firstName,
@@ -147,3 +153,25 @@ export default function SignUp(props: SignupProps) {
     </Container>
   )
 }
+
+
+interface RootState {
+  userName: String,
+  password: String,
+  firstName: String,
+  lastName: String
+}
+
+const mapState = (state: RootState) => ({
+  userName: state.userName,
+  password: state.password,
+  firstName: state.firstName,
+  lastName: state.lastName
+})
+
+const mapDispatch = {
+  updateRegisterData,
+  register
+}
+
+export default connect(mapState, mapDispatch)(SignUpComponent)

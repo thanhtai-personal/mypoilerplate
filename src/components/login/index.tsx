@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
   Avatar,
   Button,
@@ -11,6 +12,8 @@ import {
 import { LockOutlined as LockOutlinedIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
+import { login } from './../../actions/auth'
+import { updateLoginData } from './../../actions/login'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,7 +43,9 @@ interface LoginProps {
   login: any
 }
 
-const LoginComponent = (props: LoginProps) => {
+interface LoginState { }
+
+const LoginComponent = (props: LoginProps, state: LoginState) => {
   const classes = useStyles()
   const { text = {}, login, updateLoginData, userName, password } = props
   const submitLogin = (event: any) => {
@@ -120,4 +125,19 @@ const LoginComponent = (props: LoginProps) => {
   )
 }
 
-export default LoginComponent
+interface RootState {
+  userName: String,
+  password: String,
+}
+
+const mapState = (state: RootState) => ({
+  userName: state.userName,
+  password: state.password
+})
+
+const mapDispatch = {
+  updateLoginData,
+  login
+}
+
+export default connect(mapState, mapDispatch)(LoginComponent)

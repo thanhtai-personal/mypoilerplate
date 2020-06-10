@@ -2,47 +2,27 @@ import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
 import LoginComponent from '../../components/login'
-import { updateLoginData } from '../../actions/login'
-import { login } from '../../actions/auth'
 
 interface LoginProps {
-  userName: String,
-  password: String,
-  updateLoginData: any,
-  lang: any,
-  login: any
+  lang: any
 }
+interface LoginState { }
 
-class LoginContainer extends React.PureComponent<LoginProps> {
+class LoginContainer extends React.PureComponent<LoginProps, LoginState> {
   render() {
-    const { props: { userName, password,
-      updateLoginData,
-      lang,
-      login
-    } } = this
     return (
       <Container maxWidth='xl'>
-        <LoginComponent
-          userName={userName}
-          password={password}
-          updateLoginData={updateLoginData}
-          text={lang.loginContainer}
-          login={login}
-        />
+        <LoginComponent text={this.props.lang?.loginContainer} />
       </Container>)
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    userName: state?.login?.userName,
-    password: state?.login?.password
-  }
+interface RootState {
+  login: any
 }
 
-const mapDispatchToProps = (() => ({
-  updateLoginData,
-  login
-}))()
+const mapStateToProps = (state: RootState) => ({})
+
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

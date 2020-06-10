@@ -2,54 +2,27 @@ import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
 import SignupComponent from '../../components/signup'
-import { updateRegisterData } from '../../actions/register'
-import { register } from '../../actions/auth'
 
 interface RegisterProps {
-  userName: String,
-  password: String,
-  updateRegisterData: any,
-  lang: any,
-  register: any,
-  firstName: String,
-  lastName: String
+  lang: any
 }
+interface RegisterState { }
 
-class registerContainer extends React.PureComponent<RegisterProps> {
+class registerContainer extends React.PureComponent<RegisterProps, RegisterState> {
   render() {
-    const { props: {
-      userName, password, firstName, lastName,
-      updateRegisterData,
-      lang,
-      register
-    } } = this
     return (
       <Container maxWidth='xl'>
-        <SignupComponent
-          firstName={firstName}
-          lastName={lastName}
-          userName={userName}
-          password={password}
-          updateRegisterData={updateRegisterData}
-          text={lang.registerContainer}
-          register={register}
-        />
+        <SignupComponent text={this.props.lang?.registerContainer} />
       </Container>)
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    userName: state?.register?.userName,
-    password: state?.register?.password,
-    firstName: state?.register?.firstName,
-    lastName: state?.register?.lastName
-  }
+interface RootState {
+  register: any
 }
 
-const mapDispatchToProps = (() => ({
-  updateRegisterData,
-  register
-}))()
+const mapStateToProps = (state: RootState) => ({})
+
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(registerContainer)
