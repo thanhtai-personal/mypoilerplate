@@ -126,13 +126,12 @@ const LoginComponent = (props: LoginProps, state: LoginState) => {
 }
 
 interface RootState {
-  userName: String,
-  password: String,
+  login: any,
 }
 
 const mapState = (state: RootState) => ({
-  userName: state.userName,
-  password: state.password
+  userName: state.login?.userName,
+  password: state.login?.password
 })
 
 const mapDispatch = {

@@ -156,17 +156,14 @@ const SignUpComponent = (props: SignupProps, state: SignupState) => {
 
 
 interface RootState {
-  userName: String,
-  password: String,
-  firstName: String,
-  lastName: String
+  register: any
 }
 
 const mapState = (state: RootState) => ({
-  userName: state.userName,
-  password: state.password,
-  firstName: state.firstName,
-  lastName: state.lastName
+  userName: state.register?.userName,
+  password: state.register?.password,
+  firstName: state.register?.firstName,
+  lastName: state.register?.lastName
 })
 
 const mapDispatch = {

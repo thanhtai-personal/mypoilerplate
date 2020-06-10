@@ -11,7 +11,7 @@ const generatorConfig = {
     'actions', 'apis', 'actionTypes',
     'appRoutes', 'components', 'constants',
     'containers', 'customMiddleware', 'reducers',
-    'sagas', 'store', 'test'
+    'sagas', 'store', 'test', 'data'
   ]
 }
 module.exports = generatorConfig

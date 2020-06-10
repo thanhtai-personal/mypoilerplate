@@ -8,7 +8,7 @@ interface RegisterProps {
 }
 interface RegisterState { }
 
-class registerContainer extends React.PureComponent<RegisterProps, RegisterState> {
+class RegisterContainer extends React.PureComponent<RegisterProps, RegisterState> {
   render() {
     return (
       <Container maxWidth='xl'>
@@ -17,12 +17,10 @@ class registerContainer extends React.PureComponent<RegisterProps, RegisterState
   }
 }
 
-interface RootState {
-  register: any
-}
+interface RootState {}
 
 const mapStateToProps = (state: RootState) => ({})
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(registerContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer)

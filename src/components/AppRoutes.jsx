@@ -9,6 +9,7 @@ import HeaderComponent from '../components/layouts/header'
 const HomeContainer = React.lazy(() => import('../containers/home'))
 const LoginContainer = React.lazy(() => import('../containers/login'))
 const RegisterContainer = React.lazy(() => import('../containers/register'))
+const VietMapContainer = React.lazy(() => import('../containers/vietmap'))
 
 const publicRoute = [
   {
@@ -26,6 +27,12 @@ const publicRoute = [
   {
     path: appRoutesPath.register,
     component: makeSuspenseComponent(RegisterContainer),
+    isExact: false,
+    layout: {  } 
+  },
+  {
+    path: appRoutesPath.vietmap,
+    component: makeSuspenseComponent(VietMapContainer),
     isExact: false,
     layout: {  } 
   }
