@@ -17,57 +17,55 @@ interface VietMapProps {
   updateGeographyPath: any
 }
 
-interface VietMapState {}
+interface VietMapState { }
 
 const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
-  const { geography, getGeographyData, geographyPath, loading, text } = props 
+  const { geography, getGeographyData, geographyPath, loading, text } = props
   useEffect(() => {
     getGeographyData && typeof getGeographyData === 'function' && getGeographyData(geographyPath)
-  }, [ geographyPath, getGeographyData ])
+  }, [geographyPath, getGeographyData])
   if (loading) {
     return (<CenterStyled><LinearProgress />{text.loadingMap}</CenterStyled>)
   }
   return (
     <ComposableMap
-        projectionConfig={{ scale: 1800 }}
-        width={980}
-        height={700}
-        style={{
-          width: '100%',
-          height: 'auto',
-        }}
-      >
-        <ZoomableGroup center={[104, 17]}>
-          <Geographies geography={geography}>
-            {({ geographies }) => {
-              return geographies.map(
-                (geography, i) =>
-                  geography.id !== 'ATA' && (
-                    <Geography
-                      key={i}
-                      geography={geography}
-                      style={{
-                        default: {
-                          fill: '#808080',
-                          stroke: '#212529',
-                          strokeWidth: 0.75,
-                          outline: 'none',
-                        },
-                        hover: {
-                          fill: '#e6dfd9',
-                          stroke: '#212529',
-                          strokeWidth: 0.75,
-                          outline: 'none',
-                        },
-                      }}
-                    />
-                  ),
-              )
-            }
-            }
-          </Geographies>
-        </ZoomableGroup>
-      </ComposableMap>
+      projectionConfig={{ scale: 1800 }}
+      width={980}
+      height={700}
+      style={{
+        width: '100%',
+        height: 'auto',
+      }}
+    >
+      <ZoomableGroup center={[104, 17]}>
+        <Geographies geography={geography}>
+          {({ geographies }) => {
+            return geographies.map(
+              (geography, i) =>
+                (<Geography
+                  key={i}
+                  geography={geography}
+                  style={{
+                    default: {
+                      fill: '#808080',
+                      stroke: '#212529',
+                      strokeWidth: 0.75,
+                      outline: 'none',
+                    },
+                    hover: {
+                      fill: '#e6dfd9',
+                      stroke: '#212529',
+                      strokeWidth: 0.75,
+                      outline: 'none',
+                    },
+                  }}
+                />)
+            )
+          }
+          }
+        </Geographies>
+      </ZoomableGroup>
+    </ComposableMap>
   )
 }
 
