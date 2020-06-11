@@ -1,4 +1,4 @@
-import constants from './../constants'
+import constants from 'root/constants/constants'
 import en from './en.json'
 import vi from './vi.json'
 const { languageKeyEnRegex, languageKeyViRegex } = constants

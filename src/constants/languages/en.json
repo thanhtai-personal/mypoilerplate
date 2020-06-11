@@ -20,5 +20,6 @@
     "register": "Signup"
   },
   "vietMapContainer": {
+    "loadingMap": "loading map..."
   }
 }

@@ -1,63 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  ZoomableGroup,
-} from 'react-simple-maps';
+import VietMap from './vietMap'
+import { getGeographyData, updateGeographyPath } from 'root/actions/vietMap'
 
 interface VietMapProps {
   geography: any,
-  text: any
+  geographyPath: String,
+  text: any,
+  getGeographyData: any,
+  loadingGeo: Boolean,
+  updateGeographyPath: any
 }
 
 interface VietMapState { }
 
 const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
-  const { geography } = props
-  return (
-    <ComposableMap
-        projectionConfig={{ scale: 1800 }}
-        width={980}
-        height={700}
-        style={{
-          width: '100%',
-          height: 'auto',
-        }}
-      >
-        <ZoomableGroup center={[104, 17]}>
-          <Geographies geography={geography}>
-            {({ geographies }) => {
-              return geographies.map(
-                (geography, i) =>
-                  geography.id !== 'ATA' && (
-                    <Geography
-                      key={i}
-                      geography={geography}
-                      style={{
-                        default: {
-                          fill: '#808080',
-                          stroke: '#212529',
-                          strokeWidth: 0.75,
-                          outline: 'none',
-                        },
-                        hover: {
-                          fill: '#e6dfd9',
-                          stroke: '#212529',
-                          strokeWidth: 0.75,
-                          outline: 'none',
-                        },
-                      }}
-                    />
-                  ),
-              )
-            }
-            }
-          </Geographies>
-        </ZoomableGroup>
-      </ComposableMap>
-  )
+  const { geography, text, getGeographyData, loadingGeo, geographyPath, updateGeographyPath } = props
+  return (<>
+    <VietMap geography={geography} text={text} loading={loadingGeo} updateGeographyPath={updateGeographyPath}
+      getGeographyData={getGeographyData} geographyPath={geographyPath} />
+  </>)
 }
 
 interface RootState {
@@ -65,9 +27,14 @@ interface RootState {
 }
 
 const mapState = (state: RootState) => ({
-  geography: state.vietMap?.geography
+  geography: state.vietMap?.geography,
+  geographyPath: state.vietMap?.geographyPath,
+  loadingGeo: state.vietMap?.loadingGeography
 })
 
-const mapDispatch = {}
+const mapDispatch = {
+  getGeographyData,
+  updateGeographyPath
+}
 
 export default connect(mapState, mapDispatch)(VietMapComponent)

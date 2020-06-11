@@ -1,15 +1,15 @@
 import React from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { requireAuth, useLayout, useLocalization, makeSuspenseComponent } from '../customMiddleware'
-import appRoutesPath from './../appRoutes'
+import { requireAuth, useLayout, useLocalization, makeSuspenseComponent } from 'root/customMiddleware'
+import appRoutesPath from 'root/appRoutes'
 
-import HeaderComponent from '../components/layouts/header'
+import HeaderComponent from 'root/components/layouts/header'
 // load containers with react lazy to split code.
-const HomeContainer = React.lazy(() => import('../containers/home'))
-const LoginContainer = React.lazy(() => import('../containers/login'))
-const RegisterContainer = React.lazy(() => import('../containers/register'))
-const VietMapContainer = React.lazy(() => import('../containers/vietmap'))
+const HomeContainer = React.lazy(() => import('root/containers/home'))
+const LoginContainer = React.lazy(() => import('root/containers/login'))
+const RegisterContainer = React.lazy(() => import('root/containers/register'))
+const VietMapContainer = React.lazy(() => import('root/containers/vietMap'))
 
 const publicRoute = [
   {

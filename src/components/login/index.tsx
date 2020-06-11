@@ -12,8 +12,8 @@ import {
 import { LockOutlined as LockOutlinedIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
-import { login } from './../../actions/auth'
-import { updateLoginData } from './../../actions/login'
+import { login } from 'root/actions/auth'
+import { updateLoginData } from 'root/actions/login'
 
 const useStyles = makeStyles((theme) => ({
   paper: {

@@ -2,9 +2,10 @@ import React, { useEffect, useState, Suspense } from 'react'
 import { CircularProgress } from '@material-ui/core'
 import { connect } from 'react-redux'
 import eventEmitter from 'event-emitter'
-import en from './../constants/languages/en.json'
-import lanuageConfig from './../constants/languages'
-import actionType from '../actionTypes'
+import en from 'root/constants/languages/en.json'
+import lanuageConfig from 'root/constants/languages'
+import actionType from 'root/actionTypes'
+import { CenterStyled } from 'root/constants/commonStyled'
 
 const _eventEmitter = eventEmitter()
 
@@ -90,7 +91,7 @@ export const useLocalization = (ComposedComponent) => {
 export const makeSuspenseComponent = (ComposedComponent) => {
   const SuspenseComponent = (props) => {
     return (
-      <Suspense fallback={<CircularProgress />}>
+      <Suspense fallback={<CenterStyled><CircularProgress /></CenterStyled>}>
         <ComposedComponent {...props}/>
       </Suspense>
     )

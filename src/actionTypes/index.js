@@ -1,7 +1,9 @@
-import { createAsyncTypes } from '../constants/utilities'
+import { createAsyncTypes } from 'root/constants/utilities'
 import authenActionTypes from './auth'
+import vietMap from './vietMap'
 const actionType = {
-  ...authenActionTypes
+  ...authenActionTypes,
+  ...vietMap
 }
 
 Object.keys(actionType).forEach((key) => {

@@ -173,6 +173,8 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-logger": "^3.0.6",
     "shelljs": "^0.8.4",
-    "typescript": "^3.7.5"
+    "ttypescript": "^1.5.10",
+    "typescript": "^3.7.5",
+    "typescript-transform-paths": "^1.1.14"
   }
 }

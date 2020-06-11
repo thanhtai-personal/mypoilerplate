@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
-import LoginComponent from '../../components/login'
+import LoginComponent from 'root/components/login'
 
 interface LoginProps {
   lang: any

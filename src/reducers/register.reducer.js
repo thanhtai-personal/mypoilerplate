@@ -1,4 +1,4 @@
-import actionType from '../actionTypes'
+import actionType from 'root/actionTypes'
 
 const initialState = {
   userName: '',
@@ -10,10 +10,13 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionType.UPDATE_REGISTER_DATA.SUCCESS:
-    case actionType.UPDATE_REGISTER_DATA.FAILED:
       return {
         ...state,
-        ...action.data
+        ...action.payload
+      }
+    case actionType.UPDATE_REGISTER_DATA.FAILED:
+      return {
+        ...state
       }
     default:
       return state

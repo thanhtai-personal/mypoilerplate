@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
-import SignupComponent from '../../components/signup'
+import SignupComponent from 'root/components/signup'
 
 interface RegisterProps {
   lang: any

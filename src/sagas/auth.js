@@ -1,6 +1,6 @@
-import apiService from '../apis'
+import apiService from 'root/apis'
 import { put, takeLatest, all } from 'redux-saga/effects'
-import actionType from '../actionTypes'
+import actionType from 'root/actionTypes'
 
 function* login(data) {
   try {

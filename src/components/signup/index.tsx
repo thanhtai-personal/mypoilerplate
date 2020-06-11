@@ -1,6 +1,6 @@
 import React from 'react'
-import { updateRegisterData } from '../../actions/register'
-import { register } from '../../actions/auth'
+import { updateRegisterData } from 'root/actions/register'
+import { register } from 'root/actions/auth'
 import { connect } from 'react-redux'
 import {
   Avatar,

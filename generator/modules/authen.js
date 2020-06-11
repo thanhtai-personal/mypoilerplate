@@ -4,7 +4,7 @@ const authenFeature = {
   components: ['login', 'signup'],
   containers: ['login', 'register'],
   reducers: ['auth.reducer.js', 'login.reducer.js', 'register.reducer.js'],
-  sagas: ['auth.js', 'login.js', 'register.js'],
+  sagas: ['auth.js'],
   actionTypes: ['auth.js'],
   appRoutes: ['auth.js'],
   constants: ['auth.constants.js']

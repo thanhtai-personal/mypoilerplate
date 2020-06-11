@@ -4,7 +4,7 @@ import {
   AppBar, Toolbar, Typography, IconButton
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import LinkButton from '../commons/linkButton'
+import LinkButton from 'root/components/commons/linkButton'
 
 const useStyles = makeStyles((theme) => ({
   root: {
