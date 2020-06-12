@@ -3,7 +3,7 @@ const cv = {
   apis: [],
   components: ['cv'],
   containers: ['cv'],
-  reducers: ['cv.reducer'],
+  reducers: ['cv.reducer.js'],
   sagas: ['cv.js'],
   actionTypes: ['cv.js'],
   appRoutes: ['cv.js'],
