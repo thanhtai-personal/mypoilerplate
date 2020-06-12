@@ -34,9 +34,7 @@ const Header = (props: HeaderProps) => {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Menu
-          </Typography>
+          <Typography variant="h6" className={classes.title} />
           <LinkButton to={'/login'} text={text.login}/>
           <LinkButton to={'/register'} text={text.register}/>
         </Toolbar>

@@ -10,6 +10,7 @@ interface VietMapState { }
 const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
   const { text } = props
   return (<>
+    
   </>)
 }
 

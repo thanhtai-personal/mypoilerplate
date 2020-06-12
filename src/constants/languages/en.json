@@ -17,7 +17,8 @@
   },
   "headerComponent": {
     "login": "Login",
-    "register": "Signup"
+    "register": "Signup",
+    "menu": "Menu"
   },
   "vietMapContainer": {
     "loadingMap": "loading map..."

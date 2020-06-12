@@ -41,7 +41,7 @@ const publicRoute = [
     path: appRoutesPath.historicalMaps,
     component: makeSuspenseComponent(HistoricalMapsContainer),
     isExact: false,
-    layout: {}
+    layout: { header: HeaderComponent }
   }
 ]
 
