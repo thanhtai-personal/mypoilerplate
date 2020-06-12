@@ -10,31 +10,38 @@ const HomeContainer = React.lazy(() => import('root/containers/home'))
 const LoginContainer = React.lazy(() => import('root/containers/login'))
 const RegisterContainer = React.lazy(() => import('root/containers/register'))
 const VietMapContainer = React.lazy(() => import('root/containers/vietMap'))
+const HistoricalMapsContainer = React.lazy(() => import('root/containers/historicalMaps'))
 
 const publicRoute = [
   {
     path: appRoutesPath.home,
     component: makeSuspenseComponent(HomeContainer),
     isExact: false,
-    layout: { header: HeaderComponent  } 
+    layout: { header: HeaderComponent }
   },
   {
     path: appRoutesPath.login,
     component: makeSuspenseComponent(LoginContainer),
     isExact: false,
-    layout: {  } 
+    layout: {}
   },
   {
     path: appRoutesPath.register,
     component: makeSuspenseComponent(RegisterContainer),
     isExact: false,
-    layout: {  } 
+    layout: {}
   },
   {
     path: appRoutesPath.vietmap,
     component: makeSuspenseComponent(VietMapContainer),
     isExact: false,
-    layout: {  } 
+    layout: {}
+  },
+  {
+    path: appRoutesPath.historicalMaps,
+    component: makeSuspenseComponent(HistoricalMapsContainer),
+    isExact: false,
+    layout: {}
   }
 ]
 
@@ -43,7 +50,7 @@ const privateRoute = [
     path: appRoutesPath.dashboard,
     component: () => <div>test</div>,
     isExact: false,
-    layout: { header: HeaderComponent  } //{ header: Header, footer: Footer }
+    layout: { header: HeaderComponent } //{ header: Header, footer: Footer }
   }
 ]
 

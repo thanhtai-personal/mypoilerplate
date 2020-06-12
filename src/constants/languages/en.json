@@ -21,5 +21,8 @@
   },
   "vietMapContainer": {
     "loadingMap": "loading map..."
+  },
+  "historicalMapsContainer": {
+    "loadingMap": "loading map..."
   }
 }
