@@ -1,8 +1,8 @@
 const vietMapFeature = {
   actions: ['vietMap.js'],
   apis: [],
-  components: ['vietMap'],
-  containers: ['vietMap'],
+  components: ['vietmap'],
+  containers: ['vietmap'],
   reducers: ['vietMap.reducer.js'],
   sagas: ['vietMap.js'],
   actionTypes: ['vietMap.js'],

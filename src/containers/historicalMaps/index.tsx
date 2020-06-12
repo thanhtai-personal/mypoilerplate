@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
-import HistoricalMapsComponent from 'root/components/historicalMaps/vietnam'
+import HistoricalMapsComponent from 'root/components/historicalmaps/vietnam'
 
 interface HistoricalMapsProps {
   lang: any

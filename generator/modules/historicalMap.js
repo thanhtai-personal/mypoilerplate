@@ -1,8 +1,8 @@
 const historicalMap = {
   actions: ['historicalMaps.js'],
   apis: [],
-  components: ['historicalMaps'],
-  containers: ['historicalMaps'],
+  components: ['historicalmaps'],
+  containers: ['historicalmaps'],
   reducers: ['historicalMaps.reducer'],
   sagas: ['historicalMaps.js'],
   actionTypes: ['historicalMaps.js'],

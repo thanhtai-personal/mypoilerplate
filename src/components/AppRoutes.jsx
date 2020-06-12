@@ -10,8 +10,8 @@ import CVHeader from 'root/components/layouts/cvHeader'
 const HomeContainer = React.lazy(() => import('root/containers/home'))
 const LoginContainer = React.lazy(() => import('root/containers/login'))
 const RegisterContainer = React.lazy(() => import('root/containers/register'))
-const VietMapContainer = React.lazy(() => import('./../containers/vietMap'))
-const HistoricalMapsContainer = React.lazy(() => import('root/containers/historicalMaps'))
+const VietMapContainer = React.lazy(() => import('root/containers/vietmap'))
+const HistoricalMapsContainer = React.lazy(() => import('root/containers/historicalmaps'))
 const AboutMeContainer = React.lazy(() => import('root/containers/cv'))
 
 const publicRoute = [
