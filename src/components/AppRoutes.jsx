@@ -11,7 +11,7 @@ const HomeContainer = React.lazy(() => import('root/containers/home'))
 const LoginContainer = React.lazy(() => import('root/containers/login'))
 const RegisterContainer = React.lazy(() => import('root/containers/register'))
 const VietMapContainer = React.lazy(() => import('root/containers/vietmap'))
-const HistoricalMapsContainer = React.lazy(() => import('root/containers/historicalmaps'))
+const HistoricalMapsContainer = React.lazy(() => import('root/containers/historicalMaps'))
 const AboutMeContainer = React.lazy(() => import('root/containers/cv'))
 
 const publicRoute = [
