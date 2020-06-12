@@ -78,7 +78,7 @@ const history = createBrowserHistory()
 const Routes = () => (
   <Router history={history}>
     <Switch>
-      <Route path="/" exact component={useLocalization(useLayout({ header: HeaderComponent }, (makeSuspenseComponent(HomeContainer))))} />
+      <Route path="/" exact component={useLocalization(useLayout({ header: CVHeader }, (makeSuspenseComponent(AboutMeContainer))))} />
       {renderPublicRoute()}
       {renderPrivateRoute()}
       <Route component={() => { return (<div>not found</div>) }} />

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { withEventEmitter } from 'root/customMiddleware'
-import './music.scss'
 import { PlayerStyled } from './playerStyled'
 import AudioPlayer from 'root/constants/utilities/audio'
 

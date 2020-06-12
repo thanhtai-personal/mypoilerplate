@@ -104,7 +104,7 @@ class PortfolioHeader extends React.PureComponent {
                             <li><Link href='/single-blog'>Single Blog</Link></li>
                           </ul>
                         </li>
-                        <li><Link to='#'>PLinkges <i className='ti-angle-down'></i></Link>
+                        <li><Link to='#'>Pages <i className='ti-angle-down'></i></Link>
                           <ul className='submenu'>
                             <li><Link to='/portfolio'>Portfolio</Link></li>
                           </ul>
