@@ -18,12 +18,35 @@
   "headerComponent": {
     "login": "Login",
     "register": "Signup",
-    "menu": "Menu"
+    "menu": "Menu",
+    "aboutMe": "Aboutme"
   },
   "vietMapContainer": {
     "loadingMap": "loading map..."
   },
   "historicalMapsContainer": {
     "loadingMap": "loading map..."
+  },
+  "CVContainer": {
+    "service": {},
+    "slider": {},
+    "portfolio": {
+      "experiences": "EXPERIENCES",
+      "skills": "SKILLS"
+    },
+    "contact": {
+      "contact": "CONTACT",
+      "birthday": "Birthday",
+      "address": "Address",
+      "phone": "Phone",
+      "getMyCV": "Get my CV"
+    },
+    "projects": {
+      "projects": "PROJECTS"
+    },
+    "hobbies": {
+      "hobbies": "HOBBIES",
+      "interests": "INTERESTS"
+    }
   }
 }

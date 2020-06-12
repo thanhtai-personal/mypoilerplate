@@ -35,6 +35,7 @@ const Header = (props: HeaderProps) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title} />
+          <LinkButton to={'/aboutMe'} text={text.aboutMe}/>
           <LinkButton to={'/login'} text={text.login}/>
           <LinkButton to={'/register'} text={text.register}/>
         </Toolbar>
