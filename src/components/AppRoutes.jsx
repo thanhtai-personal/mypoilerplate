@@ -5,6 +5,7 @@ import { requireAuth, useLayout, useLocalization, makeSuspenseComponent } from '
 import appRoutesPath from 'root/appRoutes'
 
 import HeaderComponent from 'root/components/layouts/header'
+import CVHeader from 'root/components/layouts/cvHeader'
 // load containers with react lazy to split code.
 const HomeContainer = React.lazy(() => import('root/containers/home'))
 const LoginContainer = React.lazy(() => import('root/containers/login'))
@@ -48,7 +49,7 @@ const publicRoute = [
     path: appRoutesPath.cv,
     component: makeSuspenseComponent(AboutMeContainer),
     isExact: false,
-    layout: { }
+    layout: { header: CVHeader }
   }
 ]
 
