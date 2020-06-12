@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from '@material-ui/core'
 import { connect } from 'react-redux'
-import VietMapComponent from 'root/components/vietmap'
+import VietMapComponent from 'root/components/vietMap'
 
 interface VietMapProps {
   lang: any
