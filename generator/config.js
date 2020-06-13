@@ -1,7 +1,7 @@
 const features = require('./modules')
 const generatorConfig = {
   newProjectPath: 'D://generatedReactProjects',
-  newProjectName: 'testGenerator2',
+  newProjectName: 'generatedFeaturetest1',
   features,
   sourcePath: 'src',
   listCopyFile: [
