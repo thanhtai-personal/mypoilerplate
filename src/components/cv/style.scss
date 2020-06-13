@@ -1451,13 +1451,13 @@ h3 {
 /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
 .slider_area .single_slider::before {
   border-radius: 50%;
-  background-size: 500px auto;
+  background-size: 375px auto;
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 30px;
   background-image: url(../../data/cv/images/grid.jpg);
   background: cover;
-  width: 500px;
+  width: 375px;
   height: 500px;
   content: '';
 }
@@ -1475,7 +1475,7 @@ h3 {
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 74, ../../Arafath/CL/CL October/218 PORTFOLIO/HTML/scss/_slider.scss */
   .slider_area .single_slider::before {
-    width: 370px;
+    width: 228px;
     height: 370px;
     content: '';
     background-size: cover;
