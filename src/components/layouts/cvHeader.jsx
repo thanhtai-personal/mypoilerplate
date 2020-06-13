@@ -95,13 +95,13 @@ class PortfolioHeader extends React.PureComponent {
                   <div className='main-menu  d-none d-lg-block'>
                     <nav>
                       <ul id='navigation'>
-                        <li><Link className='active' href='/public/portfolio'>Home</Link></li>
-                        <li><Link href='/about'>About</Link></li>
-                        <li><Link href='/games'>Services</Link></li>
-                        <li><Link href='/blog'>Blog <i className='ti-angle-down'></i></Link>
+                        <li><Link className='active' to='/public/portfolio'>Home</Link></li>
+                        <li><Link to='/about'>About</Link></li>
+                        <li><Link to='/games'>Services</Link></li>
+                        <li><Link to='/blog'>Blog <i className='ti-angle-down'></i></Link>
                           <ul className='submenu'>
-                            <li><Link href='/blog'>Blog</Link></li>
-                            <li><Link href='/single-blog'>Single Blog</Link></li>
+                            <li><Link to='/blog'>Blog</Link></li>
+                            <li><Link to='/single-blog'>Single Blog</Link></li>
                           </ul>
                         </li>
                         <li><Link to='#'>Pages <i className='ti-angle-down'></i></Link>

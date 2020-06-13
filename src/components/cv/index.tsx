@@ -67,8 +67,7 @@ const CVComponent = (props: CVProps, state: CVState) => {
         case EVENT_EMITTER_COMMAND.showFaceBookMess:
           setShowFacebookMessenger(true)
           break
-        case EVENT_EMITTER_COMMAND.hideFaceBookMess:
-          setShowFacebookMessenger(false)
+        default:
           break
       }
     })

@@ -9,6 +9,5 @@ export const EVENT_EMITTER_COMMAND = {
   clearSnowSlow: 'remove single snow',
   showMusic: 'show music',
   hideMusic: 'hide music',
-  showFaceBookMess: 'show fb messenger',
-  hideFaceBookMess: 'hide fb messenger'
+  showFaceBookMess: 'show fb messenger'
 }
