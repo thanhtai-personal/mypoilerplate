@@ -95,18 +95,18 @@ class PortfolioHeader extends React.PureComponent {
                   <div className='main-menu  d-none d-lg-block'>
                     <nav>
                       <ul id='navigation'>
-                        <li><Link className='active' to='/public/portfolio'>Home</Link></li>
-                        <li><Link to='/about'>About</Link></li>
-                        <li><Link to='/games'>Services</Link></li>
-                        <li><Link to='/blog'>Blog <i className='ti-angle-down'></i></Link>
+                        <li><Link className='active' to='/home'>Home</Link></li>
+                        <li><Link to='/aboutMe'>About</Link></li>
+                        <li><Link to='/home'>Services</Link></li>
+                        <li><Link to='/vietmap'>Blog <i className='ti-angle-down'></i></Link>
                           <ul className='submenu'>
-                            <li><Link to='/blog'>Blog</Link></li>
-                            <li><Link to='/single-blog'>Single Blog</Link></li>
+                            <li><Link to='/historicalMap'>Blog</Link></li>
+                            <li><Link to='/historicalMap'>Single Blog</Link></li>
                           </ul>
                         </li>
                         <li><Link to='#'>Pages <i className='ti-angle-down'></i></Link>
                           <ul className='submenu'>
-                            <li><Link to='/portfolio'>Portfolio</Link></li>
+                            <li><Link to='/aboutMe'>Portfolio</Link></li>
                           </ul>
                         </li>
                         <li><Link to='aboutMe'>Contact</Link></li>
@@ -117,7 +117,7 @@ class PortfolioHeader extends React.PureComponent {
                 <div className='col-xl-3 col-lg-3 d-none d-lg-block'>
                   <div className='Appointment'>
                     <div className='book_btn d-none d-lg-block'>
-                      <a target='_blank' rel="noopener noreferrer" href='/portfolio/public/eyJhbGciOiJIUzI1NiJ9.dGhhbmh0YWkudHR0Z2FsYXh5QGdtYWlsLmNvbQ.6HXR4tCT6aI6aWseNfMAr3CUbVVYeGmsRL4JMC6wzPQ' className='btn contact-me'>Contact Me</a>
+                      <a target='_blank' rel="noopener noreferrer" href='/login' className='btn contact-me'>Contact Me</a>
                     </div>
                   </div>
                 </div>
