@@ -70,6 +70,10 @@ const reset = css`
         outline: 0;
     }
 
+    a: hover {
+        color: yellow;
+    }
+
     button {
         appearance: none;
         background-color: transparent;

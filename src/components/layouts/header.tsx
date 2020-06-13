@@ -29,12 +29,12 @@ const Header = (props: HeaderProps) => {
   const text = lang?.headerComponent
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position='fixed'>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='menu'>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title} />
+          <Typography variant='h6' className={classes.title} />
           <LinkButton to={'/aboutMe'} text={text.aboutMe}/>
           <LinkButton to={'/login'} text={text.login}/>
           <LinkButton to={'/register'} text={text.register}/>
