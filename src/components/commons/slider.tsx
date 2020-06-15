@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Slider } from '@material-ui/core'
+import { Slider, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 
 const useStyles = makeStyles({
@@ -31,10 +31,6 @@ const CustomSliderStyled = styled.div`
   }
 `
 
-const valuetext = (value: number) => {
-  return `${value}`
-}
-
 const defaultMark = [
   {
     value: -300,
@@ -48,24 +44,26 @@ const defaultMark = [
 
 const TimeSlider = (props: any) => {
   const classes = useStyles()
-  const { text, timelineStyle, customValueText, customMark, minTime, maxTime, timeValue, step
-    , onchange } = props
-
+  const { text, timelineStyle, customValueText, customMark, minTime, maxTime, step, defaultTimeValue } = props
+  const handleAriaValueText = (value: number) => {
+    return customValueText(value)
+  }
   return (
     <CustomSliderStyled>
       <div className={timelineStyle || classes.root}>
-        <Typography id='discrete-slider-custom' gutterBottom>
-          {text?.timeLine || 'Timeline'}
+        <Typography id="discrete-slider-always" gutterBottom>
+          {text?.timeline || 'Năm: '}
         </Typography>
         <Slider
-          defaultValue={timeValue || -300}
-          getAriaValueText={customValueText || valuetext}
+          defaultValue={defaultTimeValue || -300}
+          getAriaValueText={handleAriaValueText}
           aria-labelledby='discrete-slider-custom'
           step={step || 1}
           marks={customMark || defaultMark}
           min={minTime || -300}
           max={maxTime || 100}
-          valueLabelDisplay='auto'
+          valueLabelDisplay='on'
+          
         />
       </div>
     </CustomSliderStyled>

@@ -32,16 +32,21 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
 
   const onChangeSlider = (value : number) => {
     if (value > (maxTime - 10)) {
-      updateTimeLineData({fetching: true})
+      updateTimeLineData({ fetching: true })
       setTimeout(() => {
         updateTimeLineData({
           minTime: maxTime - 15,
           maxTime: (maxTime + 150) > 2020 ? 2020 : (maxTime + 200),
-          fetching: false
+          fetching: false,
         })
       }, 1000)
     }
+    updateTimeLineData({ currentTime: value })
     return value
+  }
+
+  const setCurrentTime = (value: number) => {
+    updateTimeLineData({ currentTime: value })
   }
 
   return (<MarginMenuTopStyled>
@@ -53,8 +58,9 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
       customMark={eventTimes}
       minTime={minTime}
       maxTime={maxTime}
-      timeValue={currentTime}
       customValueText={onChangeSlider || (() => {})}
+      setCurrentTime={setCurrentTime}
+      defaultTimeValue={-300}
     />}
     </FixedBottomStyled>
   </MarginMenuTopStyled>)
