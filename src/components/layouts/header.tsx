@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   AppBar, Toolbar, Typography, IconButton, Grid, Switch
@@ -24,27 +24,21 @@ const useStyles = makeStyles((theme) => ({
 interface HeaderProps {
   history: any,
   lang: any,
-  setTheme: any
+  setTheme: any,
+  theme: String,
 }
 
 const Header = (props: HeaderProps) => {
   const classes = useStyles()
-  const { lang, setTheme } = props
+  const { lang, setTheme, theme } = props
   const text = lang?.headerComponent
-  const [ isDarkTheme, setIsDarkTheme ] = useState(false)
-  const [ loadingTheme, setLoadingTheme ] = useState(false)
   const onChangeTheme = (e: any) => {
     const checked = e?.target?.checked
-    setIsDarkTheme(checked)
     if (checked) {
       setTheme(themeEnum.dark)
     } else {
       setTheme(themeEnum.light)
     }
-    setLoadingTheme(true)
-    setTimeout(() => {
-      setLoadingTheme(false)
-    }, 2000)
   }
   return (
     <div className={classes.root}>
@@ -57,7 +51,7 @@ const Header = (props: HeaderProps) => {
         <Grid component='label' container alignItems='center' spacing={1}>
           <Grid item>{text.light}</Grid>
           <Grid item>
-            <Switch checked={isDarkTheme} onChange={onChangeTheme} name='checkedC' disabled={loadingTheme} />
+              <Switch checked={theme === themeEnum.dark} onChange={onChangeTheme} name='checkedC' />
           </Grid>
           <Grid item>{text.dark}</Grid>
         </Grid>

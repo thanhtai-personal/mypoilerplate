@@ -36,7 +36,7 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
     , updateTimeLineData, getTimeLineData } = props
   const mapStyle = useStyles()
 
-  const onChangeSlider = (value: number) => {
+  const onChangeSlider = (event: any, value: number) => {
     if (value > (maxTime - 10)) {
       updateTimeLineData({ fetching: true })
       setTimeout(() => {

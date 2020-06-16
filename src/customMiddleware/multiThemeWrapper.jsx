@@ -31,7 +31,7 @@ const MultiThemeWrapper = (ComposedComponent) => {
       const ThemeStyled = getTheme(themeKey)
       return (
         <ThemeStyled>
-          <ComposedComponent setTheme={this.setTheme} {...this.props} />
+          <ComposedComponent themeKey={themeKey} setTheme={this.setTheme} {...this.props} />
         </ThemeStyled>
       )
     }

@@ -7,6 +7,9 @@ import lanuageConfig from 'root/constants/languages'
 import actionType from 'root/actionTypes'
 import { CenterStyled } from 'root/constants/commonStyled'
 import MultiThemeWrapper from './multiThemeWrapper'
+import CONSTANTS from 'root/constants/constants'
+
+const { themeEnum } = CONSTANTS
 
 const _eventEmitter = eventEmitter()
 
@@ -51,10 +54,10 @@ export const requireAuth = (ComposedComponent) => {
 export const useLayout = (Layout, ComposedComponent) => {
   class UseLayoutComponent extends React.PureComponent {
     render () {
-      const { setTheme, ...nestedProps } = this.props
+      const { setTheme, themeKey = themeEnum.light, ...nestedProps } = this.props
       return (
         < React.Fragment >
-          {Layout.header && <Layout.header setTheme={setTheme || (() => {})} history={this.props.history} lang={this.props.lang}/>}
+          {Layout.header && <Layout.header theme={themeKey} setTheme={setTheme || (() => {})} history={this.props.history} lang={this.props.lang}/>}
           <ComposedComponent {...nestedProps} />
           {Layout.footer && <Layout.footer />}
         </React.Fragment >
