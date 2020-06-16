@@ -44,9 +44,9 @@ const defaultMark = [
 
 const TimeSlider = (props: any) => {
   const classes = useStyles()
-  const { text, timelineStyle, customValueText, customMark, minTime, maxTime, step, defaultTimeValue } = props
+  const { text, timelineStyle, onChangeSlider, customMark, minTime, maxTime, step, defaultTimeValue } = props
   const handleAriaValueText = (value: number) => {
-    return customValueText(value)
+    return `${value}`
   }
   return (
     <CustomSliderStyled>
@@ -63,7 +63,7 @@ const TimeSlider = (props: any) => {
           min={minTime || -300}
           max={maxTime || 100}
           valueLabelDisplay='on'
-          
+          onChange={onChangeSlider}
         />
       </div>
     </CustomSliderStyled>

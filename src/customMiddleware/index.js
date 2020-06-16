@@ -6,9 +6,11 @@ import en from 'root/constants/languages/en.json'
 import lanuageConfig from 'root/constants/languages'
 import actionType from 'root/actionTypes'
 import { CenterStyled } from 'root/constants/commonStyled'
+import MultiThemeWrapper from './multiThemeWrapper'
 
 const _eventEmitter = eventEmitter()
 
+export const useMultiThemes = MultiThemeWrapper
 export const requireAuth = (ComposedComponent) => {
   class RequireAuthComponent extends React.PureComponent {
     // Push to login route if not authenticated on mount
@@ -49,10 +51,11 @@ export const requireAuth = (ComposedComponent) => {
 export const useLayout = (Layout, ComposedComponent) => {
   class UseLayoutComponent extends React.PureComponent {
     render () {
+      const { setTheme, ...nestedProps } = this.props
       return (
         < React.Fragment >
-          {Layout.header && <Layout.header history={this.props.history} lang={this.props.lang}/>}
-          <ComposedComponent {...this.props} />
+          {Layout.header && <Layout.header setTheme={setTheme || (() => {})} history={this.props.history} lang={this.props.lang}/>}
+          <ComposedComponent {...nestedProps} />
           {Layout.footer && <Layout.footer />}
         </React.Fragment >
       )

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { requireAuth, useLayout, useLocalization, makeSuspenseComponent } from 'root/customMiddleware'
+import { requireAuth, useLayout, useLocalization, makeSuspenseComponent, useMultiThemes } from 'root/customMiddleware'
 import appRoutesPath from 'root/appRoutes'
-
 import HeaderComponent from 'root/components/layouts/header'
 import CVHeader from 'root/components/layouts/cvHeader'
+
 // load containers with react lazy to split code.
 const HomeContainer = React.lazy(() => import('root/containers/home'))
 const LoginContainer = React.lazy(() => import('root/containers/login'))
@@ -64,13 +64,13 @@ const privateRoute = [
 
 const renderPublicRoute = () => {
   return publicRoute.map((route) =>
-    <Route key={route.path} path={route.path} exact={route.isExact} component={useLocalization(route.layout ? useLayout(route.layout, route.component) : route.component)} />
+    <Route key={route.path} path={route.path} exact={route.isExact} component={useMultiThemes(useLocalization(route.layout ? useLayout(route.layout, route.component) : route.component))} />
   )
 }
 
 const renderPrivateRoute = () => {
   return privateRoute.map((route) =>
-    <Route key={route.path} path={route.path} exact={route.isExact} component={useLocalization(requireAuth(route.layout ? useLayout(route.layout, route.component) : route.component))} />
+    <Route key={route.path} path={route.path} exact={route.isExact} component={useMultiThemes(useLocalization(requireAuth(route.layout ? useLayout(route.layout, route.component) : route.component)))} />
   )
 }
 
@@ -78,7 +78,7 @@ const history = createBrowserHistory()
 const Routes = () => (
   <Router history={history}>
     <Switch>
-      <Route path="/" exact component={useLocalization(useLayout({ header: HeaderComponent }, (makeSuspenseComponent(HistoricalMapsContainer))))} />
+      <Route path="/" exact component={useMultiThemes(useLocalization(useLayout({ header: HeaderComponent }, (makeSuspenseComponent(HistoricalMapsContainer)))))} />
       {renderPublicRoute()}
       {renderPrivateRoute()}
       <Route component={() => { return (<div>not found</div>) }} />

@@ -19,7 +19,9 @@
     "login": "Login",
     "register": "Signup",
     "menu": "Menu",
-    "aboutMe": "Aboutme"
+    "aboutMe": "Aboutme",
+    "light": "Light",
+    "dark": "Dark"
   },
   "vietMapContainer": {
     "loadingMap": "loading map..."

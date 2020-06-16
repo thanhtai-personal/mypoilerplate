@@ -23,3 +23,6 @@ export const createReducer =
       handlers.hasOwnProperty(action.type)
         ? handlers[action.type](state, action)
         : state)
+
+export const getTimeLineDataByYear = (timeLineData, year) => {
+}

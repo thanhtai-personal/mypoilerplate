@@ -6,3 +6,10 @@ export const updateTimeLineData = (data) => {
     data
   }
 }
+
+export const getTimeLineData = (time) => {
+  return {
+    type: actionType.GET_TIMELINE_DATA.PENDING,
+    time
+  }
+}

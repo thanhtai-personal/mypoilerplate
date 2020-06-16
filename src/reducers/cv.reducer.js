@@ -184,7 +184,7 @@ const initialState = {
   slider: {
     name: 'Trần Thanh Tài',
     title: 'Web developer',
-    slogan: 'Add goal, remove wait in your dictionary'
+    slogan: 'Follow your passion & Success will follow you'
   },
   contact: {
     birthDay: '05/06/1993',

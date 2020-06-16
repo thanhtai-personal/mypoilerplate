@@ -262,7 +262,8 @@ const initialState = {
   minTime: -300,
   maxTime: 50,
   currentTime: -300,
-  fetching: false
+  fetching: false,
+  fetchingData: false
 }
 
 export default (state = initialState, action) => {
@@ -273,10 +274,6 @@ export default (state = initialState, action) => {
         loadingMap: true
       }
     case actionType.LOAD_MAP.SUCCESS:
-      return {
-        ...state,
-        loadingMap: false
-      }
     case actionType.LOAD_MAP.FAILED:
       return {
         ...state,
@@ -286,6 +283,19 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ...action.data
+      }
+    case actionType.GET_TIMELINE_DATA.PENDING:
+      return {
+        ...state,
+        currentTime: action.time,
+        fetchingData: true
+      }
+    case actionType.GET_TIMELINE_DATA.SUCCESS:
+    case actionType.GET_TIMELINE_DATA.FAILED:
+      return {
+        ...state,
+        ...action.data,
+        fetchingData: false
       }
     default:
       return state

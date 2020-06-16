@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import TimeSlider from 'root/components/commons/slider'
-import { MarginMenuTopStyled, FixedBottomStyled, CenterWidthStyled } from 'root/constants/commonStyled'
+import TimeSlider from 'root/components/commons/timeSlider'
+import { MarginMenuTopStyled, FixedBottomStyled, CenterWidthStyled, OpacityStyled, CenterStyled
+  , MarginForFixedBottomFrameStyled
+} from 'root/constants/commonStyled'
 import { makeStyles } from '@material-ui/core/styles'
-import { updateTimeLineData } from 'root/actions/historicalMaps'
+import {
+  updateTimeLineData, getTimeLineData
+} from 'root/actions/historicalMaps'
 import LoadingComponent from 'root/components/commons/loadingComponent'
 
 interface VietMapProps {
@@ -13,7 +17,9 @@ interface VietMapProps {
   maxTime: number,
   currentTime: number,
   updateTimeLineData: any,
-  fetching: Boolean
+  fetching: Boolean,
+  fetchingData: Boolean,
+  getTimeLineData: any
 }
 
 interface VietMapState { }
@@ -26,11 +32,11 @@ const useStyles = makeStyles({
 
 const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
 
-  const { text, eventTimes, minTime, maxTime, currentTime, fetching
-    , updateTimeLineData } = props
+  const { text, eventTimes, minTime, maxTime, currentTime, fetching, fetchingData
+    , updateTimeLineData, getTimeLineData } = props
   const mapStyle = useStyles()
 
-  const onChangeSlider = (value : number) => {
+  const onChangeSlider = (value: number) => {
     if (value > (maxTime - 10)) {
       updateTimeLineData({ fetching: true })
       setTimeout(() => {
@@ -45,25 +51,30 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
     return value
   }
 
-  const setCurrentTime = (value: number) => {
-    updateTimeLineData({ currentTime: value })
-  }
+  useEffect(() => {
+    getTimeLineData(currentTime)
+  }, [currentTime, getTimeLineData])
 
-  return (<MarginMenuTopStyled>
-    <FixedBottomStyled>
-    {fetching ? 
-    <CenterWidthStyled><LoadingComponent /></CenterWidthStyled>
-    : <TimeSlider
-      timelineStyle={mapStyle.timelineStyle} text={text}
-      customMark={eventTimes}
-      minTime={minTime}
-      maxTime={maxTime}
-      customValueText={onChangeSlider || (() => {})}
-      setCurrentTime={setCurrentTime}
-      defaultTimeValue={-300}
-    />}
-    </FixedBottomStyled>
-  </MarginMenuTopStyled>)
+  return (
+    <MarginMenuTopStyled>
+      {fetchingData ? <CenterStyled><LoadingComponent /></CenterStyled>
+        : <MarginForFixedBottomFrameStyled>
+          <div style={{ height: '1000px'}}></div>
+        </MarginForFixedBottomFrameStyled>
+      }
+      <FixedBottomStyled><OpacityStyled>
+        {fetching ? <CenterWidthStyled><LoadingComponent /></CenterWidthStyled>
+          : <TimeSlider
+            timelineStyle={mapStyle.timelineStyle} text={text}
+            customMark={eventTimes}
+            minTime={minTime}
+            maxTime={maxTime}
+            onChangeSlider={onChangeSlider || (() => { })}
+            defaultTimeValue={-300}
+          />}
+      </OpacityStyled></FixedBottomStyled>
+    </MarginMenuTopStyled>
+  )
 }
 
 interface RootState {
@@ -75,11 +86,13 @@ const mapState = (state: RootState) => ({
   minTime: state.historicalMaps?.minTime,
   maxTime: state.historicalMaps?.maxTime,
   currentTime: state.historicalMaps?.currentTime,
-  fetching: state.historicalMaps?.fetching
+  fetching: state.historicalMaps?.fetching,
+  fetchingData: state.historicalMaps?.fetchingData
 })
 
 const mapDispatch = {
-  updateTimeLineData
+  updateTimeLineData,
+  getTimeLineData
 }
 
 export default connect(mapState, mapDispatch)(VietMapComponent)

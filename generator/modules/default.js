@@ -2,7 +2,7 @@ const defaultModule = {
   apis: ['devConfig.js', 'index.js', 'prodConfig.js'],
   components: ['layouts', 'AppRoutes.jsx', 'commons'],
   containers: ['home'],
-  customMiddleware: ['index.js'],
+  customMiddleware: ['index.js', 'multiThemeWrapper.jsx'],
   reducers: ['index.js'],
   sagas: ['index.js'],
   store: ['index.js', 'store.dev.js','store.prod.js'],
