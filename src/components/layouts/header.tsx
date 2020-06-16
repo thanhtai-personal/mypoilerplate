@@ -34,17 +34,17 @@ const Header = (props: HeaderProps) => {
   const [ isDarkTheme, setIsDarkTheme ] = useState(false)
   const [ loadingTheme, setLoadingTheme ] = useState(false)
   const onChangeTheme = (e: any) => {
-    setLoadingTheme(true)
-    setTimeout(() => {
-      setLoadingTheme(false)
-    }, 2000)
     const checked = e?.target?.checked
+    setIsDarkTheme(checked)
     if (checked) {
       setTheme(themeEnum.dark)
     } else {
       setTheme(themeEnum.light)
     }
-    setIsDarkTheme(checked)
+    setLoadingTheme(true)
+    setTimeout(() => {
+      setLoadingTheme(false)
+    }, 2000)
   }
   return (
     <div className={classes.root}>
