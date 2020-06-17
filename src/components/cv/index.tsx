@@ -4,6 +4,7 @@ import './style.scss'
 import LoadingComponent from 'root/components/commons/loadingComponent'
 import { withEventEmitter } from 'root/customMiddleware'
 import { EVENT_EMITTER_COMMAND } from 'root/constants/cv/enums'
+import { CustomScrollBarStyled } from 'root/constants/commonStyled'
 
 const RainEffect = React.lazy(() => import('./effects/rain'))
 const SnowFallEffect = React.lazy(() => import('./effects/snowFall'))
@@ -73,14 +74,14 @@ const CVComponent = (props: CVProps, state: CVState) => {
     })
   }, [ props.eventEmitter ])
   return (
-    <>
+    <CustomScrollBarStyled>
       {showRain && <RainEffect />}
       {showSnow && <SnowFallEffect />}
       {/* {showSnowSlow && <SnowFallSlowEffect />} */}
       <ContentComponent text={text} />
       {showMusic && makeSuspenseComponent(<Music listAudioUrl={[]} />)}
       {showFacebookMessenger && makeSuspenseComponent(<FacebookMessenger />)}
-    </>
+    </CustomScrollBarStyled>
   )
 }
 

@@ -59,6 +59,24 @@ export const MarginForFixedBottomFrameStyled = styled.div`
     border-radius: 10px;
   }
 `
+
+export const CustomScrollBarStyled = styled.div`
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  ::-webkit-scrollbar-thumb {
+    background: steelblue;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+`
+
 export const OpacityStyled = styled.div`
   opacity: 0.8;
 `
