@@ -1,0 +1,96 @@
+import React, { useEffect, useState } from 'react'
+import { CardMedia, Card, CardContent, Typography } from '@material-ui/core'
+import { createStyles, makeStyles } from '@material-ui/core/styles'
+// import { TypingStyled } from 'root/constants/commonStyled'
+
+interface TimeLineViewerProps {
+  data: any
+}
+
+const loremText = `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form
+, by injected humour, or randomised words which don't look even slightly believable
+. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+ All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+  It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures
+, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition
+, injected humour, or non-characteristic words etc.`
+
+interface ImageData {
+  name: string,
+  link: string,
+  minTime: number,
+  maxTime: number,
+  time: string,
+  content: string,
+  title: string,
+  imageTitle: string
+}
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      display: 'flex',
+    },
+    details: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    content: {
+      flex: '1 0 auto',
+      width: 'calc(97vw - 520px)'
+    },
+    cover: {
+      width: '500px',
+      height: '823px'
+    },
+    centerText: {
+      textAlign: 'center'
+    },
+    contentText: {
+      paddingTop: '20px'
+    }
+  }),
+);
+
+const TimeLineViewer = (props: TimeLineViewerProps) => {
+  const { data } = props
+  const [ imagesList, setImageList ] = useState<any[]>([])
+  useEffect(() => {
+    let images: any[] = []
+    Object.keys(data).forEach((key) => {
+      let _maps = data[key].maps || {}
+      Object.keys(_maps).forEach((key2) => {
+        if (_maps[key2].link) {
+          images.push(_maps[key2])
+        }
+      });
+    })
+    setImageList(images)
+  }, [ data ])
+  const classes = useStyles()
+  return (
+    <div>
+      {imagesList.map((image: ImageData) => (
+        <Card className={classes.root}>
+          <div className={classes.details}>
+            <CardContent className={classes.content}>
+              <Typography className={classes.centerText} component="h5" variant="h5">
+                {image.title || image.time}
+              </Typography>
+              <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
+                {image.content || loremText}
+              </Typography>
+            </CardContent>
+          </div>
+          <CardMedia
+            className={classes.cover}
+            image={image.link}
+            title={image.imageTitle}
+          />
+        </Card>
+      ))}
+    </div>
+  )
+}
+
+export default TimeLineViewer

@@ -6,8 +6,14 @@ import AudioPlayer from 'root/constants/utilities/audio'
 import background1 from 'root/data/cv/music/khacviet-yeu.mp3'
 import background2 from 'root/data/cv/music/doimat.mp3'
 import background3 from 'root/data/cv/music/ToiMuonYeuMotNguoi-KhoiMy.mp3'
+import background4 from 'root/data/cv/music/emgioi.mp3'
 
 const defaultMusicList = [
+  {
+    name: 'Em gì ơi',
+    artist: 'Jack',
+    src: background4
+  },
   {
     name: 'Đôi mắt',
     artist: 'beat',

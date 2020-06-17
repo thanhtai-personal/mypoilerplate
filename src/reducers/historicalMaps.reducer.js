@@ -263,7 +263,8 @@ const initialState = {
   maxTime: 50,
   currentTime: -300,
   fetching: false,
-  fetchingData: false
+  fetchingData: false,
+  timeLineData: {}
 }
 
 export default (state = initialState, action) => {
@@ -291,6 +292,11 @@ export default (state = initialState, action) => {
         fetchingData: true
       }
     case actionType.GET_TIMELINE_DATA.SUCCESS:
+      return {
+        ...state,
+        timeLineData: action.timeLineData,
+        fetchingData: false
+      }
     case actionType.GET_TIMELINE_DATA.FAILED:
       return {
         ...state,

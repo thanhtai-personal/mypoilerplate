@@ -9,6 +9,7 @@ import {
   updateTimeLineData, getTimeLineData
 } from 'root/actions/historicalMaps'
 import LoadingComponent from 'root/components/commons/loadingComponent'
+import TimeLineViewer from '../timeLineViewer'
 
 interface VietMapProps {
   text: any,
@@ -19,7 +20,8 @@ interface VietMapProps {
   updateTimeLineData: any,
   fetching: Boolean,
   fetchingData: Boolean,
-  getTimeLineData: any
+  getTimeLineData: any,
+  timeLineData: any
 }
 
 interface VietMapState { }
@@ -32,17 +34,27 @@ const useStyles = makeStyles({
 
 const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
 
-  const { text, eventTimes, minTime, maxTime, currentTime, fetching, fetchingData
+  const { text, eventTimes, minTime, maxTime, currentTime, fetching, fetchingData, timeLineData
     , updateTimeLineData, getTimeLineData } = props
   const mapStyle = useStyles()
 
   const onChangeSlider = (event: any, value: number) => {
-    if (value > (maxTime - 10)) {
+    if (value > (maxTime - 10) && maxTime < 2020) {
       updateTimeLineData({ fetching: true })
       setTimeout(() => {
         updateTimeLineData({
           minTime: maxTime - 15,
-          maxTime: (maxTime + 150) > 2020 ? 2020 : (maxTime + 200),
+          maxTime: (maxTime + 200) > 2020 ? 2020 : (maxTime + 200),
+          fetching: false,
+        })
+      }, 1000)
+    }
+    if (value < (minTime + 10) && minTime > -300) {
+      updateTimeLineData({ fetching: true })
+      setTimeout(() => {
+        updateTimeLineData({
+          minTime: (minTime - 200) < -300 ? 300 : (minTime - 200),
+          maxTime: minTime + 15,
           fetching: false,
         })
       }, 1000)
@@ -59,7 +71,7 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
     <MarginMenuTopStyled>
       {fetchingData ? <CenterStyled><LoadingComponent /></CenterStyled>
         : <MarginForFixedBottomFrameStyled>
-          <div style={{ height: '1000px'}}></div>
+          <TimeLineViewer data={timeLineData}/>
         </MarginForFixedBottomFrameStyled>
       }
       <FixedBottomStyled><OpacityStyled>
@@ -87,7 +99,8 @@ const mapState = (state: RootState) => ({
   maxTime: state.historicalMaps?.maxTime,
   currentTime: state.historicalMaps?.currentTime,
   fetching: state.historicalMaps?.fetching,
-  fetchingData: state.historicalMaps?.fetchingData
+  fetchingData: state.historicalMaps?.fetchingData,
+  timeLineData: state.historicalMaps?.timeLineData
 })
 
 const mapDispatch = {

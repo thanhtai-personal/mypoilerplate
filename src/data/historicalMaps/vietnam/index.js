@@ -6,9 +6,15 @@ const VNHistoryData = {
       IIITCN: {
         link: Links.vanlang,
         name: 'vanlang',
-        time: 'Khoảng thế kỷ thứ 3 trước công nguyên',
+        title: 'Khoảng thế kỷ thứ 3 trước công nguyên',
+        imageTitle: 'Nước Văn Lang thuộc bộ tộc Lạc Việt đã hình thành trên vùng bình nguyên bao gồm đồng bằng sông Hồng, đồng bằng sông Mã và đồng bằng Sông Lam.',
         minTime: -300,
-        maxTime: -207
+        maxTime: -208,
+        content: `Khoảng thế kỷ thứ III trước công nguyên một số sử liệu và huyền thoại cho rằng vào đầu thời Hồng Bàng, 
+        bộ tộc người Việt có lãnh thổ rộng lớn từ phía nam sông Dương Tử (Trung Quốc) đến tận vùng Thanh Hóa. Thực chất các bộ tộc Việt phía Nam sông Trường Giang không có cùng sắc tộc, 
+        chủng tộc và ngôn ngữ. Cái tên Bách Việt là chỉ chung cho các bộ tộc các nhà nước phía Nam của Trung Nguyên. \n\n
+        Nước Văn Lang thuộc bộ tộc Lạc Việt đã hình thành trên vùng bình nguyên bao gồm đồng bằng sông Hồng, đồng bằng sông Mã và đồng bằng Sông Lam.\n\n
+        `
       }
     }
   },
@@ -17,7 +23,17 @@ const VNHistoryData = {
       Y207TCN: {
         link: Links.aulac,
         name: 'aulac',
-        time: 'Năm 207 trước công nguyên'
+        title: 'Năm 207 trước công nguyên',
+        imageTitle: '',
+        minTime: -207,
+        maxTime: -207,
+        content: `Khoảng thế kỷ thứ III trước công nguyên một số sử liệu và huyền thoại cho rằng vào đầu thời Hồng Bàng, 
+        bộ tộc người Việt có lãnh thổ rộng lớn từ phía nam sông Dương Tử (Trung Quốc) đến tận vùng Thanh Hóa. Thực chất các bộ tộc Việt phía Nam sông Trường Giang không có cùng sắc tộc, 
+        chủng tộc và ngôn ngữ. Cái tên Bách Việt là chỉ chung cho các bộ tộc các nhà nước phía Nam của Trung Nguyên. \n\n
+        Nước Văn Lang thuộc bộ tộc Lạc Việt đã hình thành trên vùng bình nguyên bao gồm đồng bằng sông Hồng, đồng bằng sông Mã và đồng bằng Sông Lam.\n\n
+        Sau khi chiếm được Văn Lang, Thục Phán đã sát nhập Văn Lang vào đất của mình, 
+        nước Âu Lạc có lãnh thổ từ phía nam sông Tả Giang (Quảng Tây,Trung Quốc) kéo xuống tận dãy Hoành Sơn thuộc Hà Tĩnh ngày nay.
+        `
       }
     }
   },

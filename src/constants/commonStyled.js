@@ -1,5 +1,6 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import styledVariables from './styledVariables'
+
 export const CenterStyled = styled.div`
   width: 100%;
   height: auto;
@@ -61,11 +62,79 @@ export const MarginForFixedBottomFrameStyled = styled.div`
 export const OpacityStyled = styled.div`
   opacity: 0.8;
 `
+
+// theme color
 export const DarkStyled = styled.div`
   ${styledVariables.fullSize}
   background-color: black;
 `
 export const LightStyled = styled.div`
   ${styledVariables.fullSize}
-  background-color: white;
+  background-color: lightyellow;
+`
+export const LightRedStyled = styled.div`
+  ${styledVariables.fullSize}
+  background-color: lightsalmon;
+`
+export const LightGreenStyled = styled.div`
+  ${styledVariables.fullSize}
+  background-color: yellowgreen;
+`
+export const LightBlueStyled = styled.div`
+  ${styledVariables.fullSize}
+  background-color: mediumaquamarine;
+`
+export const DarkRedStyled = styled.div`
+  ${styledVariables.fullSize}
+  background-color: darksalmon;
+`
+export const DarkGreenStyled = styled.div`
+  ${styledVariables.fullSize}
+  background-color: darkolivegreen;
+`
+export const DarkBlueStyled = styled.div`
+  ${styledVariables.fullSize}
+  background-color: royalblue;
+`
+//end theme color
+
+export const SmallTextStyled = styled.span`
+  font-size: ${styledVariables.smallFontSize}px;
+
+`
+export const MakeSpaceStyled = styled.div`
+  &.space-10 {
+    width: 10px;
+  }
+  &.space-20 {
+    width: 20px;
+  }
+  &.space-30 {
+    width: 30px;
+  }
+  &.space-40 {
+    width: 40px;
+  }
+  &.space-50 {
+    width: 50px;
+  }
+  height: 100%;
+  color: inherit;
+`
+
+const typing = keyframes`
+  from { width: 0 }
+  to { width: 100% }
+`
+const blinkCaret = keyframes`
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+`
+export const TypingStyled = styled.div`
+  overflow: hidden; 
+  border-right: .15em solid orange; 
+  white-space: nowrap; 
+  margin: 0 auto; 
+  letter-spacing: .15em;
+  animation: ${typing} 3.5s steps(40, end), ${blinkCaret} .75s step-end infinite;
 `

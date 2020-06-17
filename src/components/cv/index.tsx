@@ -7,7 +7,7 @@ import { EVENT_EMITTER_COMMAND } from 'root/constants/cv/enums'
 
 const RainEffect = React.lazy(() => import('./effects/rain'))
 const SnowFallEffect = React.lazy(() => import('./effects/snowFall'))
-const SnowFallSlowEffect = React.lazy(() => import('./effects/snowFallSlow'))
+// const SnowFallSlowEffect = React.lazy(() => import('./effects/snowFallSlow'))
 const Music = React.lazy(() => import('./music'))
 const FacebookMessenger = React.lazy(() => import('./facebook/messenger'))
 const ContentComponent = React.lazy(() => import('./content'))
@@ -23,7 +23,7 @@ const CVComponent = (props: CVProps, state: CVState) => {
   const { text } = props
   const [showRain, setShowRain] = useState(false)
   const [showSnow, setShowSnow] = useState(false)
-  const [showSnowSlow, setShowSnowSlow] = useState(false)
+  // const [showSnowSlow, setShowSnowSlow] = useState(false)
   const [showMusic, setShowMusic] = useState(false)
   const [showFacebookMessenger, setShowFacebookMessenger] = useState(false)
   const makeSuspenseComponent = (component: any) => (<Suspense fallback={<LoadingComponent />}>{component}</Suspense>)
@@ -36,12 +36,12 @@ const CVComponent = (props: CVProps, state: CVState) => {
         case EVENT_EMITTER_COMMAND.clearAll:
           setShowRain(false)
           setShowSnow(false)
-          setShowSnowSlow(false)
+          // setShowSnowSlow(false)
           break
         case EVENT_EMITTER_COMMAND.showAll:
           setShowRain(true)
           setShowSnow(true)
-          setShowSnowSlow(true)
+          // setShowSnowSlow(true)
           break
         case EVENT_EMITTER_COMMAND.showRain:
           setShowRain(true)
@@ -52,12 +52,12 @@ const CVComponent = (props: CVProps, state: CVState) => {
         case EVENT_EMITTER_COMMAND.clearSnow:
           setShowSnow(false)
           break
-        case EVENT_EMITTER_COMMAND.showSnowSlow:
-          setShowSnowSlow(true)
-          break
-        case EVENT_EMITTER_COMMAND.clearSnowSlow:
-          setShowSnowSlow(false)
-          break
+        // case EVENT_EMITTER_COMMAND.showSnowSlow:
+        //   setShowSnowSlow(true)
+        //   break
+        // case EVENT_EMITTER_COMMAND.clearSnowSlow:
+        //   setShowSnowSlow(false)
+        //   break
         case EVENT_EMITTER_COMMAND.showMusic:
           setShowMusic(true)
           break
@@ -76,7 +76,7 @@ const CVComponent = (props: CVProps, state: CVState) => {
     <>
       {showRain && <RainEffect />}
       {showSnow && <SnowFallEffect />}
-      {showSnowSlow && <SnowFallSlowEffect />}
+      {/* {showSnowSlow && <SnowFallSlowEffect />} */}
       <ContentComponent text={text} />
       {showMusic && makeSuspenseComponent(<Music listAudioUrl={[]} />)}
       {showFacebookMessenger && makeSuspenseComponent(<FacebookMessenger />)}
