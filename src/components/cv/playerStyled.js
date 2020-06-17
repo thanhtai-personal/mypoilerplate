@@ -31,11 +31,13 @@ export const PlayerStyled = styled.div`
 			color: #222;
 			font-size: 16px;
 			margin-bottom: 5px;
+			overflow: hidden;
 		}
 		.name {
 			color: #999;
 			font-size: 12px;
 			margin-bottom: 8px;
+			overflow: hidden;
 		}
 		.progress-bar {
 			background-color: #ddd;

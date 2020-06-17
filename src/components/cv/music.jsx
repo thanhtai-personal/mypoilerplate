@@ -7,12 +7,18 @@ import background1 from 'root/data/cv/music/khacviet-yeu.mp3'
 import background2 from 'root/data/cv/music/doimat.mp3'
 import background3 from 'root/data/cv/music/ToiMuonYeuMotNguoi-KhoiMy.mp3'
 import background4 from 'root/data/cv/music/emgioi.mp3'
+import background5 from 'root/data/cv/music/Tinh-Sau-Thien-Thu-Muon-Loi-Doan-Hieu.mp3'
 
 const defaultMusicList = [
   {
     name: 'Em gì ơi',
     artist: 'Jack',
     src: background4
+  },
+  {
+    name: 'Tinh sau thien thu muon loi',
+    artist: 'Doan Hieu',
+    src: background5
   },
   {
     name: 'Đôi mắt',
