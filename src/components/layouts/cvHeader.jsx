@@ -64,7 +64,7 @@ class PortfolioHeader extends React.PureComponent {
     // const { props: { setLanguage, language } } = this
     return (
       <header>
-        <div className='header-area '>
+        <div className='header-area' style={{position: 'relative', backgroundColor: 'steelblue', height: '75px'}}>
           <div id='sticky-header' className='main-header-area'>
             <div className='container-fluid'>
               <div className='row align-items-center'>
