@@ -52,6 +52,21 @@ const useStyles = makeStyles(() =>
   }),
 );
 
+const replaceBreakLine = (string: string) => {
+  const newString = string.replace(/\n/g, '<br />')
+  const listStrings = newString.split('<br />')
+  listStrings.forEach((str) => {
+
+  })
+  return (
+    <span>
+      {listStrings.map(str => {
+        return (<>{str}<br/></>)
+      })}
+    </span>
+  )
+}
+
 const TimeLineViewer = (props: TimeLineViewerProps) => {
   const { data } = props
   const [ imagesList, setImageList ] = useState<any[]>([])
@@ -78,7 +93,7 @@ const TimeLineViewer = (props: TimeLineViewerProps) => {
                 {image.title || image.time}
               </Typography>
               <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
-                {image.content || loremText}
+                {replaceBreakLine(image.content || loremText)}
               </Typography>
             </CardContent>
           </div>
