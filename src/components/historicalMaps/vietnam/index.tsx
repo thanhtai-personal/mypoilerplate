@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import TimeSlider from 'root/components/commons/timeSlider'
-import { MarginMenuTopStyled, FixedBottomStyled, CenterWidthStyled, OpacityStyled, CenterStyled
+import {
+  MarginMenuTopStyled, FixedBottomStyled, CenterWidthStyled, OpacityStyled, CenterStyled
   , MarginForFixedBottomFrameStyled
 } from 'root/constants/commonStyled'
 import { makeStyles } from '@material-ui/core/styles'
 import {
-  updateTimeLineData, getTimeLineData
+  updateTimeLineData
 } from 'root/actions/historicalMaps'
 import LoadingComponent from 'root/components/commons/loadingComponent'
 import TimeLineViewer from '../timeLineViewer'
+import FullVietMapData from 'root/data/historicalMaps/vietnam'
+import { getTimeLineData } from 'root/constants/utilities'
 
 interface VietMapProps {
   text: any,
@@ -20,7 +23,6 @@ interface VietMapProps {
   updateTimeLineData: any,
   fetching: Boolean,
   fetchingData: Boolean,
-  getTimeLineData: any,
   timeLineData: any
 }
 
@@ -34,44 +36,42 @@ const useStyles = makeStyles({
 
 const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
 
-  const { text, eventTimes, minTime, maxTime, currentTime, fetching, fetchingData, timeLineData
-    , updateTimeLineData, getTimeLineData } = props
+  const { text, eventTimes, minTime, maxTime, currentTime, fetching, fetchingData
+    , updateTimeLineData } = props
   const mapStyle = useStyles()
+
+  const [timeLineData, setTimeLineData] = useState(getTimeLineData(-300, FullVietMapData))
 
   const onChangeSlider = (event: any, value: number) => {
     if (value > (maxTime - 10) && maxTime < 2020) {
       updateTimeLineData({ fetching: true })
-      setTimeout(() => {
-        updateTimeLineData({
-          minTime: maxTime - 15,
-          maxTime: (maxTime + 200) > 2020 ? 2020 : (maxTime + 200),
-          fetching: false,
-        })
-      }, 1000)
+      updateTimeLineData({
+        minTime: maxTime - 15,
+        maxTime: (maxTime + 200) > 2020 ? 2020 : (maxTime + 200),
+        fetching: false,
+      })
     }
     if (value < (minTime + 10) && minTime > -300) {
       updateTimeLineData({ fetching: true })
-      setTimeout(() => {
-        updateTimeLineData({
-          minTime: (minTime - 200) < -300 ? 300 : (minTime - 200),
-          maxTime: minTime + 15,
-          fetching: false,
-        })
-      }, 1000)
+      updateTimeLineData({
+        minTime: (minTime - 200) < -300 ? 300 : (minTime - 200),
+        maxTime: minTime + 15,
+        fetching: false,
+      })
     }
     updateTimeLineData({ currentTime: value })
     return value
   }
 
   useEffect(() => {
-    getTimeLineData(currentTime)
-  }, [currentTime, getTimeLineData])
+    setTimeLineData(getTimeLineData(currentTime, FullVietMapData))
+  }, [currentTime])
 
   return (
     <MarginMenuTopStyled>
       {fetchingData ? <CenterStyled><LoadingComponent /></CenterStyled>
         : <MarginForFixedBottomFrameStyled>
-          <TimeLineViewer data={timeLineData}/>
+          <TimeLineViewer mapData={timeLineData} />
         </MarginForFixedBottomFrameStyled>
       }
       <FixedBottomStyled><OpacityStyled>
@@ -104,8 +104,7 @@ const mapState = (state: RootState) => ({
 })
 
 const mapDispatch = {
-  updateTimeLineData,
-  getTimeLineData
+  updateTimeLineData
 }
 
 export default connect(mapState, mapDispatch)(VietMapComponent)

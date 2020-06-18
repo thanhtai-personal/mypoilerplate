@@ -285,12 +285,6 @@ export default (state = initialState, action) => {
         ...state,
         ...action.data
       }
-    case actionType.GET_TIMELINE_DATA.PENDING:
-      return {
-        ...state,
-        currentTime: action.time,
-        fetchingData: true
-      }
     case actionType.GET_TIMELINE_DATA.SUCCESS:
       return {
         ...state,

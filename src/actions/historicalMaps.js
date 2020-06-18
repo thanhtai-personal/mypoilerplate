@@ -7,9 +7,9 @@ export const updateTimeLineData = (data) => {
   }
 }
 
-export const getTimeLineData = (time) => {
+export const getTimeLineData = (data) => {
   return {
     type: actionType.GET_TIMELINE_DATA.PENDING,
-    time
+    data
   }
 }
