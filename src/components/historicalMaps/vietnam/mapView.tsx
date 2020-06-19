@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CardMedia, Card, CardContent, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 
 interface MapViewProps {
   data: any
@@ -116,13 +117,18 @@ const MapView = (props: MapViewProps) => {
               </CardContent>
             </div>
           </Card>
-          <Card className={classes.mapImage}>
-            <CardMedia
-              className={classes.cover}
-              image={image.link}
-              title={image.imageTitle}
-            />
-          </Card>
+          <TransformWrapper>
+            <TransformComponent>
+              <Card className={classes.mapImage}>
+                <CardMedia
+                  className={classes.cover}
+                  image={image.link}
+                  title={image.imageTitle}
+                />
+              </Card>
+            </TransformComponent>
+          </TransformWrapper>
+
         </>
       ))}
     </div>
