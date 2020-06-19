@@ -863,7 +863,7 @@ const VNHistoryData = {
         name: 'vietnam4',
         title: 'Việt Nam 1976',
         minTime: 1976,
-        maxTime: 1976,
+        maxTime: 2020,
         contentTime: 1976,
         content: `Đế quốc Việt Nam là tên chính thức của một chính phủ tồn tại 5 tháng trong lịch sử Việt Nam\n
         Nước Việt Nam Dân Chủ Cộng Hòa được thành lập vào ngày 2/9/1945\n

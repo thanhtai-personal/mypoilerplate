@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CardMedia, Card, CardContent, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-// import { TypingStyled } from 'root/constants/commonStyled'
+import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
 
 interface MapViewProps {
   data: any
@@ -51,17 +51,20 @@ const useStyles = makeStyles(() =>
     },
     content: {
       flex: '1 0 auto',
-      width: 'calc(97vw - 520px)'
+      width: 'calc(97vw - 520px)',
+      fontSize: '12px'
     },
     cover: {
       width: '500px',
       height: '823px',
+      boxShadow: 'inset 9px 9px 2px 0px'
     },
     centerText: {
       textAlign: 'center'
     },
     contentText: {
-      paddingTop: '20px'
+      paddingTop: '20px',
+      cursor: 'text'
     }
   }),
 );
@@ -105,10 +108,10 @@ const MapView = (props: MapViewProps) => {
             <div className={classes.details}>
               <CardContent className={classes.content}>
                 <Typography className={classes.centerText} component="h5" variant="h5">
-                  {image.title || image.time}
+                  <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
                 </Typography>
                 <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
-                  {replaceBreakLine(image.content || loremText)}
+                  <SelectedTextStyled>{replaceBreakLine(image.content || loremText)}</SelectedTextStyled>
                 </Typography>
               </CardContent>
             </div>

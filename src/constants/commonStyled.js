@@ -156,3 +156,61 @@ export const TypingStyled = styled.div`
   letter-spacing: .15em;
   animation: ${typing} 3.5s steps(40, end), ${blinkCaret} .75s step-end infinite;
 `
+
+export const HoverTextAnimation = styled.span`
+  .content {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #000, #000 60%, #fff 60%, #fff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: red;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease-out;
+    white-space: nowrap;
+  }
+  .content:hover {
+    color: #76b6c4;
+  }
+  :before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: #76b6c4;
+    color: white;
+    top: 60%;
+  }
+  :hover:before {
+    top: 80%;
+    height: 20%;
+    transition: all 0.2s ease-out;
+  }
+  position: relative;
+}
+`
+
+export const SelectedTextStyled = styled.span`
+user-select: text;
+::-moz-selection {
+  color: red;
+  background: yellow;
+}
+::selection {
+  color: red;
+  background: yellow;
+}
+span {
+  user-select: text;  
+  ::-moz-selection {
+    color: red;
+    background: yellow;
+  }
+  ::selection {
+    color: red;
+    background: yellow;
+  }
+}
+`
