@@ -1,4 +1,50 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const drop = keyframes`
+  0% {
+    transform: translateY(0vh);
+  }
+  75% {
+    transform: translateY(90vh);
+  }
+  100% {
+    transform: translateY(90vh);
+  }
+`
+
+const stem = keyframes`
+  0% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+`
+
+const splat = keyframes`
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  90% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+`
 
 export const Rain = styled.div`
 .rain {
@@ -25,39 +71,15 @@ body.back-row-toggle .rain.back-row {
   width: 15px;
   height: 120px;
   pointer-events: none;
-  animation: drop 0.5s linear infinite;
+  animation: ${drop} 0.5s linear infinite;
 }
-@keyframes drop {
-  0% {
-    transform: translateY(0vh);
-  }
-  75% {
-    transform: translateY(90vh);
-  }
-  100% {
-    transform: translateY(90vh);
-  }
-}
+
 .stem {
   width: 1px;
   height: 60%;
   margin-left: 7px;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
-  animation: stem 0.5s linear infinite;
-}
-@keyframes stem {
-  0% {
-    opacity: 1;
-  }
-  65% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+  animation: ${stem} 0.5s linear infinite;
 }
 .splat {
   width: 15px;
@@ -66,29 +88,11 @@ body.back-row-toggle .rain.back-row {
   border-radius: 50%;
   opacity: 1;
   transform: scale(0);
-  animation: splat 0.5s linear infinite;
+  animation: ${splat} 0.5s linear infinite;
   display: none;
 }
 body.splat-toggle .splat {
   display: block;
-}
-@keyframes splat {
-  0% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  80% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  90% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
 }
 .toggles {
   position: absolute;

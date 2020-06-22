@@ -3,6 +3,7 @@ import { CardMedia, Card, CardContent, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
+import RainEffect from 'root/components/commons/effects/rain'
 
 interface MapViewProps {
   data: any
@@ -24,7 +25,8 @@ interface ImageData {
   time: string,
   content: string,
   title: string,
-  imageTitle: string
+  imageTitle: string,
+  isRain: Boolean
 }
 
 const contentBackGround = 'white'
@@ -128,7 +130,7 @@ const MapView = (props: MapViewProps) => {
               </Card>
             </TransformComponent>
           </TransformWrapper>
-
+          {image.isRain && <RainEffect color='black' />}
         </>
       ))}
     </div>

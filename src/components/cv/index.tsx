@@ -6,8 +6,8 @@ import { withEventEmitter } from 'root/customMiddleware'
 import { EVENT_EMITTER_COMMAND } from 'root/constants/cv/enums'
 import { CustomScrollBarStyled } from 'root/constants/commonStyled'
 
-const RainEffect = React.lazy(() => import('./effects/rain'))
-const SnowFallEffect = React.lazy(() => import('./effects/snowFall'))
+const RainEffect = React.lazy(() => import('../commons/effects/rain'))
+const SnowFallEffect = React.lazy(() => import('../commons/effects/snowFall'))
 // const SnowFallSlowEffect = React.lazy(() => import('./effects/snowFallSlow'))
 const Music = React.lazy(() => import('./music'))
 const FacebookMessenger = React.lazy(() => import('./facebook/messenger'))

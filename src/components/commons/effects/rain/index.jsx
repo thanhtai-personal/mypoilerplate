@@ -45,10 +45,10 @@ class RainEffect extends PureComponent {
   }
 
   render() {
-    const { frontRow = true, backRow = true, single = false, className } = this.props
+    const { frontRow = true, backRow = true, single = false, className, color } = this.props
     return (
       <div className={this.props.className || ''}>
-        <Rain>
+        <Rain className={color || ''}>
           <div className={`back-row-toggle splat-toggle ${single ? 'single-toggle' : ''} ${className || ''}`}>
             {frontRow && <div className='rain front-row'></div>}
             {backRow && <div className='rain back-row'></div>}
