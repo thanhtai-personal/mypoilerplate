@@ -1,3 +1,7 @@
+/**
+ * support : Chrome, Edge, Firefox, Opera, Safari
+ */
+
 import styled, { keyframes } from 'styled-components'
 import styledVariables from './styledVariables'
 
@@ -213,4 +217,20 @@ span {
     background: yellow;
   }
 }
+`
+const fade = keyframes`
+  from {
+    opacity: 0;
+    width: 200%;
+    height: 200%;
+  }
+  to {
+    opacity: 1
+    width: 100%;
+    height: 100%;
+  }
+`
+
+export const AppearAnimationDiv = styled.div`
+  animation: ${fade} 3s 1 100ms
 `

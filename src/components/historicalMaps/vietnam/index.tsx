@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import TimeSlider from 'root/components/commons/timeSlider'
 import {
   MarginMenuTopStyled, FixedBottomStyled, CenterWidthStyled, OpacityStyled, CenterStyled
-  , MarginForFixedBottomFrameStyled
+  , MarginForFixedBottomFrameStyled, AppearAnimationDiv
 } from 'root/constants/commonStyled'
 import { makeStyles } from '@material-ui/core/styles'
 import {
@@ -72,7 +72,7 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
     <MarginMenuTopStyled>
       {fetchingData ? <CenterStyled><LoadingComponent /></CenterStyled>
         : <MarginForFixedBottomFrameStyled>
-          <TimeLineViewer mapData={timeLineData} />
+          <AppearAnimationDiv><TimeLineViewer mapData={timeLineData} /></AppearAnimationDiv>
         </MarginForFixedBottomFrameStyled>
       }
       <FixedBottomStyled><OpacityStyled>
