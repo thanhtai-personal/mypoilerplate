@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { CardMedia, Card, CardContent, Typography } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
@@ -28,48 +28,28 @@ interface ImageData {
   imageTitle: string,
   isRain: Boolean
 }
-
-const contentBackGround = 'white'
-
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      width: '100%',
-      backgroundColor: contentBackGround
-    },
-    historycontent: {
-      display: 'flex',
-      float: 'left',
-      backgroundColor: contentBackGround,
-      minHeight: '823px'
-    },
-    mapImage: {
-      display: 'flex',
-      float: 'right',
-      backgroundColor: contentBackGround
-    },
-    details: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    content: {
-      flex: '1 0 auto',
-      width: 'calc(97vw - 520px)',
-      fontSize: '12px'
-    },
-    cover: {
-      width: '500px',
-      height: '823px',
-      boxShadow: 'inset 9px 9px 2px 0px'
-    },
-    centerText: {
-      textAlign: 'center'
-    },
-    contentText: {
-      paddingTop: '20px',
-      cursor: 'text'
-    }
-  }),
+const useStyles = makeStyles((theme) => {
+  return createStyles({
+      historycontent: {
+        minHeight: '823px'
+      },
+      details: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+      cover: {
+        width: '500px',
+        height: '823px'
+      },
+      centerText: {
+        textAlign: 'center'
+      },
+      contentText: {
+        paddingTop: '20px',
+        cursor: 'text'
+      }
+    })
+  }
 );
 
 const replaceBreakLine = (string: string) => {
@@ -79,11 +59,11 @@ const replaceBreakLine = (string: string) => {
 
   })
   return (
-    <span>
-      {listStrings.map(str => {
-        return (<>{str}<br /></>)
+    <h5>
+      {listStrings.map((str, index: number) => {
+        return (<Fragment key={`break-line-key-${index}`}>{str}<br /></Fragment>)
       })}
-    </span>
+    </h5>
   )
 }
 
@@ -104,36 +84,38 @@ const MapView = (props: MapViewProps) => {
   }, [data])
   const classes = useStyles()
   return (
-    <div className={classes.root}>
-      {imagesList.map((image: ImageData) => (
-        <>
-          <Card className={classes.historycontent}>
-            <div className={classes.details}>
-              <CardContent className={classes.content}>
-                <Typography className={classes.centerText} component="h5" variant="h5">
-                  <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
-                </Typography>
-                <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
-                  <SelectedTextStyled>{replaceBreakLine(image.content || loremText)}</SelectedTextStyled>
-                </Typography>
-              </CardContent>
-            </div>
-          </Card>
-          <TransformWrapper>
-            <TransformComponent>
-              <Card className={classes.mapImage}>
-                <CardMedia
-                  className={classes.cover}
-                  image={image.link}
-                  title={image.imageTitle}
-                />
-              </Card>
-            </TransformComponent>
-          </TransformWrapper>
-          {image.isRain && <RainEffect color='black' />}
-        </>
-      ))}
-    </div>
+    <>
+      {imagesList.map((image: ImageData, index: number) => {
+        return (
+          <Fragment key={`map-view-${image.name}-${index}`}>
+            <Card className={classes.historycontent}>
+              <div className={classes.details}>
+                <CardContent>
+                  <Typography className={classes.centerText} component="h5" variant="h5">
+                    <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
+                  </Typography>
+                  <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
+                    <SelectedTextStyled>{replaceBreakLine(image.content || loremText)}</SelectedTextStyled>
+                  </Typography>
+                </CardContent>
+              </div>
+            </Card>
+            <TransformWrapper>
+              <TransformComponent>
+                <Card>
+                  <CardMedia
+                    className={classes.cover}
+                    image={image.link}
+                    title={image.imageTitle}
+                  />
+                </Card>
+              </TransformComponent>
+            </TransformWrapper>
+            {image.isRain && <RainEffect />}
+          </Fragment>
+        )}
+      )}
+    </>
   )
 }
 

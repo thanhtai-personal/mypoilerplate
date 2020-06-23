@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
   AppBar, Toolbar, Typography, IconButton, Grid, Switch
@@ -6,6 +6,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu'
 import LinkButton from 'root/components/commons/linkButton'
 import CONSTANTS from 'root/constants/constants'
+import { ThemeContext } from 'root/customMiddleware/multiThemeProvider'
 
 const { themeEnum } = CONSTANTS
 
@@ -24,14 +25,13 @@ const useStyles = makeStyles((theme) => ({
 interface HeaderProps {
   history: any,
   lang: any,
-  setTheme: any,
-  theme: String,
 }
 
 const Header = (props: HeaderProps) => {
   const classes = useStyles()
-  const { lang, setTheme, theme } = props
+  const { lang } = props
   const text = lang?.headerComponent
+  const setTheme = useContext(ThemeContext)
   const onChangeTheme = (e: any) => {
     const checked = e?.target?.checked
     if (checked) {
@@ -51,7 +51,7 @@ const Header = (props: HeaderProps) => {
         <Grid component='label' container alignItems='center' spacing={1}>
           <Grid item>{text.light}</Grid>
           <Grid item>
-              <Switch checked={theme === themeEnum.dark} onChange={onChangeTheme} name='checkedC' />
+              <Switch defaultChecked={false} onChange={onChangeTheme} name='checkedC' />
           </Grid>
           <Grid item>{text.dark}</Grid>
         </Grid>

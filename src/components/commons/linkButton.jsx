@@ -1,12 +1,12 @@
 import React from 'react'
-import { Button } from '@material-ui/core'
+import { Button, Typography } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 const LinkButton = (props) => {
   const { to, text, ...nestedProps } = props
   return (
-    <Button color="inherit" {...nestedProps}>
-      <Link to={props.to}>{props.text}</Link>
+    <Button {...nestedProps}>
+      <Link to={props.to}><Typography>{props.text}</Typography></Link>
     </Button>
   )
 }

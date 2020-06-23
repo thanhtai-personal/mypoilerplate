@@ -12,6 +12,7 @@ const useStyles = makeStyles({
 const CustomSliderStyled = styled.div`
   background-color: lightblue;
   padding-left: 25px;
+  border-radius: 10px;
   .MuiSlider-track {
     background-color: orange;
   }

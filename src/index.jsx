@@ -15,14 +15,14 @@ const store = configureStore()
 store.runSaga(rootSaga)
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <AppRoute />
       </Provider>
       <GlobalStyle />
     </BrowserRouter>,
-  </React.StrictMode>,
+  // </React.StrictMode>,
   document.getElementById('root')
 )
 // If you want your app to work offline and load faster, you can change

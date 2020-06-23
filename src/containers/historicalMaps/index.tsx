@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from '@material-ui/core'
+import { Container, CssBaseline } from '@material-ui/core'
 import { connect } from 'react-redux'
 import HistoricalMapsComponent from 'root/components/historicalMaps/vietnam'
 
@@ -11,7 +11,8 @@ interface HistoricalMapsState { }
 class HistoricalMapsContainer extends React.PureComponent<HistoricalMapsProps, HistoricalMapsState> {
   render() {
     return (
-      <Container maxWidth='xl'>
+      <Container maxWidth='lg'>
+        <CssBaseline />
         <HistoricalMapsComponent text={this.props.lang?.historicalMapsContainer} />
       </Container>)
   }

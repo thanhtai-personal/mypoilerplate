@@ -6,23 +6,31 @@ import en from 'root/constants/languages/en.json'
 import lanuageConfig from 'root/constants/languages'
 import actionType from 'root/actionTypes'
 import { CenterStyled } from 'root/constants/commonStyled'
-import MultiThemeWrapper from './multiThemeWrapper'
-import CONSTANTS from 'root/constants/constants'
-
-const { themeEnum } = CONSTANTS
+import MultiThemeWrapper from './multiThemeProvider'
 
 const _eventEmitter = eventEmitter()
 
-export const useMultiThemes = MultiThemeWrapper
+export const useMultiThemes = (ComposedComponent) => {
+  
+  return class MultiThemeWrapperComponent extends React.PureComponent {
+    render() {
+      return (
+        <MultiThemeWrapper>
+          <ComposedComponent />
+        </MultiThemeWrapper>
+      )
+    }
+  }
+}
 export const requireAuth = (ComposedComponent) => {
   class RequireAuthComponent extends React.PureComponent {
     // Push to login route if not authenticated on mount
 
-    getToken() {
+    getToken () {
       return window.localStorage.getItem('jwtToken');
     }
 
-    componentWillMount() {
+    componentWillMount () {
       if (!this.getToken()) {
         this.props.history.push('/login')
       } else {
@@ -31,7 +39,7 @@ export const requireAuth = (ComposedComponent) => {
     }
 
     // Otherwise render the original component
-    render() {
+    render () {
       return <ComposedComponent {...this.props} />
     }
 
@@ -54,11 +62,10 @@ export const requireAuth = (ComposedComponent) => {
 export const useLayout = (Layout, ComposedComponent) => {
   class UseLayoutComponent extends React.PureComponent {
     render () {
-      const { setTheme, themeKey = themeEnum.light, ...nestedProps } = this.props
       return (
         < React.Fragment >
-          {Layout.header && <Layout.header theme={themeKey} setTheme={setTheme || (() => {})} history={this.props.history} lang={this.props.lang}/>}
-          <ComposedComponent {...nestedProps} />
+          {Layout.header && <Layout.header history={this.props.history} lang={this.props.lang} />}
+          <ComposedComponent {...this.props} />
           {Layout.footer && <Layout.footer />}
         </React.Fragment >
       )
@@ -86,10 +93,10 @@ export const useLocalization = (ComposedComponent) => {
       setLanguage(lanuageConfig.find((lang) => lang.test?.test(window.location.href))?.value || en)
     }, [])
     return (
-      <ComposedComponent lang={language} setLanguage={setLanguage} {...props}/>
+      <ComposedComponent lang={language} setLanguage={setLanguage} {...props} />
     )
   }
-  
+
   return LocalizedComponent
 }
 
@@ -98,7 +105,7 @@ export const makeSuspenseComponent = (ComposedComponent) => {
   const SuspenseComponent = (props) => {
     return (
       <Suspense fallback={<CenterStyled><CircularProgress /></CenterStyled>}>
-        <ComposedComponent {...props}/>
+        <ComposedComponent {...props} />
       </Suspense>
     )
   }

@@ -10,9 +10,10 @@ import {
   updateTimeLineData
 } from 'root/actions/historicalMaps'
 import LoadingComponent from 'root/components/commons/loadingComponent'
-import TimeLineViewer from '../timeLineViewer'
 import FullVietMapData from 'root/data/historicalMaps/vietnam'
 import { getTimeLineData } from 'root/constants/utilities'
+ 
+const TimeLineViewer = React.lazy(() => import('../timeLineViewer'))
 
 interface VietMapProps {
   text: any,
