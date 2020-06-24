@@ -52,6 +52,18 @@ export const lightTheme = createMuiTheme({
       root: {
         color: 'white'
       }
+    },
+    MuiExpansionPanel: {
+      root: { 
+        backgroundColor: 'steelblue',
+        fontSize: '12px',
+        color: 'black',
+        border: 'solid 1px yellow'
+      }
+    },
+    MuiDrawer: {
+      root: {
+      }
     }
   }
 });

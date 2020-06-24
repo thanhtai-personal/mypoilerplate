@@ -20,7 +20,7 @@ class HistoricalMapsContainer extends React.PureComponent<HistoricalMapsProps, H
   componentDidMount() {
     setTimeout(() => {
       this.setState({ loadingAnimation: false })
-    }, 3000)
+    }, 1000)
   }
 
   render() {

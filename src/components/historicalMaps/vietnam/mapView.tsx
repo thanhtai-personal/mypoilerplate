@@ -71,9 +71,6 @@ const useStyles = makeStyles((theme) => {
 const replaceBreakLine = (string: string) => {
   const newString = string.replace(/\n/g, '<br />')
   const listStrings = newString.split('<br />')
-  listStrings.forEach((str) => {
-
-  })
   return (
     <h5>
       {listStrings.map((str, index: number) => {

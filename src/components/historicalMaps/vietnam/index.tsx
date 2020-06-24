@@ -72,7 +72,7 @@ const VietMapComponent = (props: VietMapProps, state: VietMapState) => {
     <MarginMenuTopStyled>
       {fetchingData ? <CenterStyled><LoadingComponent /></CenterStyled>
         : <MarginForFixedBottomFrameStyled>
-          <AppearAnimationDiv><TimeLineViewer mapData={timeLineData} /></AppearAnimationDiv>
+          <AppearAnimationDiv><TimeLineViewer mapData={timeLineData} peopleData={[]} /></AppearAnimationDiv>
         </MarginForFixedBottomFrameStyled>
       }
       <FixedBottomStyled><OpacityStyled>
