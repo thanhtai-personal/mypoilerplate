@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react'
-import { CardMedia, Card, CardContent, Typography } from '@material-ui/core'
+import { CardMedia, Card, CardContent, Typography, Slide, Collapse, Fade } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
@@ -30,26 +30,26 @@ interface ImageData {
 }
 const useStyles = makeStyles((theme) => {
   return createStyles({
-      historycontent: {
-        minHeight: '823px'
-      },
-      details: {
-        display: 'flex',
-        flexDirection: 'column',
-      },
-      cover: {
-        width: '500px',
-        height: '823px'
-      },
-      centerText: {
-        textAlign: 'center'
-      },
-      contentText: {
-        paddingTop: '20px',
-        cursor: 'text'
-      }
-    })
-  }
+    historycontent: {
+      minHeight: '823px'
+    },
+    details: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    cover: {
+      width: '500px',
+      height: '823px'
+    },
+    centerText: {
+      textAlign: 'center'
+    },
+    contentText: {
+      paddingTop: '20px',
+      cursor: 'text'
+    }
+  })
+}
 );
 
 const replaceBreakLine = (string: string) => {
@@ -91,29 +91,38 @@ const MapView = (props: MapViewProps) => {
             <Card className={classes.historycontent}>
               <div className={classes.details}>
                 <CardContent>
-                  <Typography className={classes.centerText} component="h5" variant="h5">
-                    <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
-                  </Typography>
-                  <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
-                    <SelectedTextStyled>{replaceBreakLine(image.content || loremText)}</SelectedTextStyled>
-                  </Typography>
+                  <Slide direction='down' in={true} timeout={800} mountOnEnter unmountOnExit>
+                    <Typography className={classes.centerText} component="h5" variant="h5">
+                      <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
+                    </Typography>
+                  </Slide>
+                  <Fade timeout={1200} in={true} mountOnEnter unmountOnExit>
+                    <Collapse in={true} mountOnEnter unmountOnExit>
+                      <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
+                        <SelectedTextStyled>{replaceBreakLine(image.content || loremText)}</SelectedTextStyled>
+                      </Typography>
+                    </Collapse>
+                  </Fade>
                 </CardContent>
               </div>
             </Card>
             <TransformWrapper>
               <TransformComponent>
                 <Card>
-                  <CardMedia
-                    className={classes.cover}
-                    image={image.link}
-                    title={image.imageTitle}
-                  />
+                  <Fade in={true} timeout={1000} mountOnEnter unmountOnExit>
+                    <CardMedia
+                      className={classes.cover}
+                      image={image.link}
+                      title={image.imageTitle}
+                    />
+                  </Fade>
                 </Card>
               </TransformComponent>
             </TransformWrapper>
             {image.isRain && <RainEffect />}
           </Fragment>
-        )}
+        )
+      }
       )}
     </>
   )
