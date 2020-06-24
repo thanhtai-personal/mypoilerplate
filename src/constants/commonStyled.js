@@ -50,7 +50,6 @@ export const MarginForFixedBottomFrameStyled = styled.div`
   height: calc(100vh - ${styledVariables.bottomFixed + styledVariables.timeSliderHeight + styledVariables.menuHeight + 5}px);
   width: 97vw;
   overflow-y: auto;
-  background-color: lightsteelblue;
   ::-webkit-scrollbar-thumb {
     background: steelblue;
     border-radius: 10px;
