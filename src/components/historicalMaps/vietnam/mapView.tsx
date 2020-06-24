@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react'
-import { CardMedia, Card, CardContent, Typography, Slide, Collapse, Fade } from '@material-ui/core'
+import { CardMedia, Card, CardContent, Typography, Slide, Collapse, Fade, useMediaQuery } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
@@ -31,7 +31,6 @@ interface ImageData {
 const useStyles = makeStyles((theme) => {
   return createStyles({
     historycontent: {
-      minHeight: '823px'
     },
     details: {
       display: 'flex',
@@ -41,12 +40,29 @@ const useStyles = makeStyles((theme) => {
       width: '500px',
       height: '823px'
     },
+    coverMinisize: {
+      width: '200px',
+      height: '330px'
+    },
     centerText: {
+      textAlign: 'center'
+    },
+    miniHeader: {
+      fontSize: '11px',
       textAlign: 'center'
     },
     contentText: {
       paddingTop: '20px',
       cursor: 'text'
+    },
+    content: {
+      width: 'calc(97vw - 520px)',
+    },
+    miniContent: {
+      width: 'calc(97vw - 210px)',
+    },
+    marginTop: {
+      top: '150px'
     }
   })
 }
@@ -82,6 +98,7 @@ const MapView = (props: MapViewProps) => {
     })
     setImageList(images)
   }, [data])
+  const matches = useMediaQuery('(max-width:450px)')
   const classes = useStyles()
   return (
     <>
@@ -90,9 +107,9 @@ const MapView = (props: MapViewProps) => {
           <Fragment key={`map-view-${image.name}-${index}`}>
             <Card className={classes.historycontent}>
               <div className={classes.details}>
-                <CardContent>
+                <CardContent className={matches ? classes.miniContent : classes.content}>
                   <Slide direction='down' in={true} timeout={800} mountOnEnter unmountOnExit>
-                    <Typography className={classes.centerText} component="h5" variant="h5">
+                    <Typography className={matches ? classes.miniHeader : classes.centerText} component="h5" variant="h5">
                       <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
                     </Typography>
                   </Slide>
@@ -108,10 +125,10 @@ const MapView = (props: MapViewProps) => {
             </Card>
             <TransformWrapper>
               <TransformComponent>
-                <Card>
+                <Card className={matches ? classes.marginTop : ''}>
                   <Fade in={true} timeout={1000} mountOnEnter unmountOnExit>
                     <CardMedia
-                      className={classes.cover}
+                      className={matches ? classes.coverMinisize : classes.cover}
                       image={image.link}
                       title={image.imageTitle}
                     />

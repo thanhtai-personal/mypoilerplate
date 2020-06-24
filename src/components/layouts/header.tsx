@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import {
-  AppBar, Toolbar, Typography, IconButton, Grid, Switch
+  AppBar, Toolbar, Typography, IconButton, Grid, Switch, useMediaQuery
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import LinkButton from 'root/components/commons/linkButton'
@@ -40,6 +40,7 @@ const Header = (props: HeaderProps) => {
       setTheme(themeEnum.light)
     }
   }
+  const matches = useMediaQuery('(max-width:450px)')
   return (
     <div className={classes.root}>
       <AppBar position='fixed'>
@@ -48,18 +49,18 @@ const Header = (props: HeaderProps) => {
             <MenuIcon />
           </IconButton>
           <Typography component='div'>
-        <Grid component='label' container alignItems='center' spacing={1}>
-          <Grid item>{text.light}</Grid>
-          <Grid item>
-              <Switch defaultChecked={false} onChange={onChangeTheme} name='checkedC' />
-          </Grid>
-          <Grid item>{text.dark}</Grid>
-        </Grid>
-      </Typography>
+            <Grid component='label' container alignItems='center' spacing={1}>
+              <Grid item>{text.light}</Grid>
+              <Grid item>
+                <Switch defaultChecked={false} onChange={onChangeTheme} name='checkedC' />
+              </Grid>
+              <Grid item>{text.dark}</Grid>
+            </Grid>
+          </Typography>
           <Typography variant='h6' className={classes.title} />
-          <LinkButton to={'/aboutMe'} text={text.aboutMe}/>
-          <LinkButton to={'/login'} text={text.login}/>
-          <LinkButton to={'/register'} text={text.register}/>
+          <LinkButton to={'/aboutMe'} text={text.aboutMe} />
+          {!matches && <LinkButton to={'/login'} text={text.login} />}
+          {!matches && <LinkButton to={'/register'} text={text.register} />}
         </Toolbar>
       </AppBar>
     </div>

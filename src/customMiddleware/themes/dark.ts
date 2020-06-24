@@ -19,7 +19,6 @@ export const darkTheme = createMuiTheme({
       root: {
         backgroundColor: 'darkslateblue',
         flex: '1 0 auto',
-        width: 'calc(97vw - 520px)',
         fontSize: '12px',
       }
     },

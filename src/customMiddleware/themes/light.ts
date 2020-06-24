@@ -19,7 +19,6 @@ export const lightTheme = createMuiTheme({
       root: {
         backgroundColor: 'bisque',
         flex: '1 0 auto',
-        width: 'calc(97vw - 520px)',
         fontSize: '12px',
       }
     },
