@@ -19,7 +19,8 @@
     {
       "key": 4,
       "label": "Triều đại",
-      "value": "Nhà Trần"
+      "value": "Nhà Trần",
+      "wiki": "https://vi.wikipedia.org/wiki/Nh%C3%A0_Tr%E1%BA%A7n"
     },
     {
       "key": 5,
@@ -34,11 +35,12 @@
     {
       "key": 7,
       "label": "Nơi An Táng",
-      "value": "Vườn An Lạc"
+      "value": "Vườn An Lạc",
+      "wiki": "https://vi.wikipedia.org/wiki/An_L%E1%BA%A1c_(%C4%91%E1%BB%8Bnh_h%C6%B0%E1%BB%9Bng)"
     }
   ],
   "birthYear": 1228,
   "deathYear": 1300,
   "wiki": "https://vi.wikipedia.org/wiki/Tr%E1%BA%A7n_H%C6%B0ng_%C4%90%E1%BA%A1o",
-  "spcialName": "Nhân Vũ Hưng Đạo đại vương Trần Quốc Tuấn"
+  "specialName": "Nhân Vũ Hưng Đạo đại vương Trần Quốc Tuấn"
 }

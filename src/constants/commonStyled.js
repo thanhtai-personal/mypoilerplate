@@ -239,3 +239,25 @@ const fade = keyframes`
 export const AppearAnimationDiv = styled.div`
   animation: ${fade} 3s 1 100ms
 `
+export const BrightTextAnimation = styled.div`
+  @font-face {
+    font-family: Clip;
+    src: url("https://acupoftee.github.io/fonts/Clip.ttf");
+  }
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  letter-spacing: 2;
+  font-family: "Clip";
+  text-transform: uppercase;
+  color: #ffe6ff;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #ff65bd,
+    -0.2rem 0.1rem 1rem #ff65bd, 0.2rem 0.1rem 1rem #ff65bd,
+    0 -0.5rem 2rem #ff2483, 0 0.5rem 3rem #ff2483;
+`

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import clsx from 'clsx'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { List, Divider, ListItemText, ListItem } from '@material-ui/core'
+import { BrightTextAnimation } from 'root/constants/commonStyled'
 
 const useStyles = makeStyles((theme) => {
   return createStyles({
@@ -13,8 +14,9 @@ const useStyles = makeStyles((theme) => {
       width: 'auto',
     },
     list: {
-      width: '30vw',
-      backgroundColor: '#e6f2ff',
+      minWidth: '35vw',
+      maxWidth: '50vh',
+      backgroundColor: '#4682B4',
       height: '100vh',
       // overflow: 'scroll',
       'overflow-y': 'auto',
@@ -30,6 +32,16 @@ const useStyles = makeStyles((theme) => {
         borderRadius: '10px',
       }
     },
+    lastItemList: {
+      bottom: '20px',
+      position: 'fixed',
+      color: 'orange',
+      border: 'solid 2px yellow'
+    },
+    wikiText: {
+      overflow: 'hidden',
+      fontSize: '1.5em'
+    }
   })
 });
 
@@ -39,7 +51,7 @@ const Panel = (props: any) => {
   const infos = celebrityData?.data || []
   const listItems = infos.map((info: any, index: number) => (
     <Fragment key={`${info.key}-${index}`}>
-      <ListItem button>
+      <ListItem button onClick={() => { info.wiki && window.open(info.wiki, '_blank')}}>
         <ListItemText primary={info.label} secondary={info.value}  />
       </ListItem>
       <Divider />
@@ -55,10 +67,13 @@ const Panel = (props: any) => {
     <List component="nav" className={classes.root} aria-label="mailbox folders">
       {listItems}
       <ListItem button key='wiki'>
-        <ListItemText primary={'WiKi'} secondary={celebrityData?.wiki} onClick={() => { openWiki(celebrityData?.wiki) }} />
+        <ListItemText className={classes.wikiText} primary={'Thêm thông tin...'} secondary='Wiki' onClick={() => { openWiki(celebrityData?.wiki) }} />
       </ListItem>
-      <ListItem button key='special-name'>
-        <h4 style={{ color: 'yellow'}}>{celebrityData?.specialName}</h4>
+      <ListItem button key='empty'>
+        <ListItemText />
+      </ListItem>
+      <ListItem className={classes.lastItemList} button key='special-name'>
+        <BrightTextAnimation>{celebrityData?.specialName}</BrightTextAnimation>
       </ListItem>
     </List>
   </div>)

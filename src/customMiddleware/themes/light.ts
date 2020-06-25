@@ -64,6 +64,16 @@ export const lightTheme = createMuiTheme({
     MuiDrawer: {
       root: {
       }
+    },
+    MuiListItemText: {
+      primary: {
+        fontSize: '0.6em',
+        color: 'white'
+      },
+      secondary: {
+        fontSize: '1.2em',
+        color: 'yellow'
+      }
     }
   }
 });
