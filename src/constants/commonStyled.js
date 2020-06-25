@@ -196,7 +196,10 @@ export const HoverTextAnimation = styled.span`
 `
 
 export const SelectedTextStyled = styled.span`
-user-select: text;
+-webkit-user-select: text;
+-moz-user-select: text;     
+-ms-user-select: text;      
+user-select: text;          
 ::-moz-selection {
   color: red;
   background: yellow;
@@ -205,8 +208,11 @@ user-select: text;
   color: red;
   background: yellow;
 }
-span {
-  user-select: text;  
+span, h5, h6 {
+  -webkit-user-select: text;
+  -moz-user-select: text;     
+  -ms-user-select: text;      
+  user-select: text;   
   ::-moz-selection {
     color: red;
     background: yellow;

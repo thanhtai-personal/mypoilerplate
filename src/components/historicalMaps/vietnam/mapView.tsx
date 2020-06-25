@@ -3,7 +3,6 @@ import { CardMedia, Card, CardContent, Typography, Slide, Collapse, Fade, useMed
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { HoverTextAnimation, SelectedTextStyled } from 'root/constants/commonStyled'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
-import RainEffect from 'root/components/commons/effects/rain'
 
 interface MapViewProps {
   data: any
@@ -101,19 +100,20 @@ const MapView = (props: MapViewProps) => {
     <>
       {imagesList.map((image: ImageData, index: number) => {
         return (
-          <Fragment key={`map-view-${image.name}-${index}`}>
+          <div key={`map-view-${image.name}-${index}`}>
             <Card className={classes.historycontent}>
               <div className={classes.details}>
                 <CardContent className={matches ? classes.miniContent : classes.content}>
                   <Slide direction='down' in={true} timeout={800} mountOnEnter unmountOnExit>
-                    <Typography className={matches ? classes.miniHeader : classes.centerText} component="h5" variant="h5">
+                    <Typography className={matches ? classes.miniHeader : classes.centerText} component='h5' variant='h5'>
                       <HoverTextAnimation><span className='content'>{image.title || image.time}</span></HoverTextAnimation>
                     </Typography>
                   </Slide>
                   <Fade timeout={1200} in={true} mountOnEnter unmountOnExit>
                     <Collapse in={true} mountOnEnter unmountOnExit>
-                      <Typography className={classes.contentText} variant="subtitle1" color="textSecondary">
+                      <Typography className={classes.contentText} variant='subtitle1' color='textSecondary'>
                         <SelectedTextStyled>{replaceBreakLine(image.content || loremText)}</SelectedTextStyled>
+                        <br /><h5>Tư liệu được lấy từ: <a href='https://lichsunuocvietnam.com/' rel='noopener noreferrer' target='_blank'>https://lichsunuocvietnam.com/</a></h5>
                       </Typography>
                     </Collapse>
                   </Fade>
@@ -133,8 +133,7 @@ const MapView = (props: MapViewProps) => {
                 </Card>
               </TransformComponent>
             </TransformWrapper>
-            {image.isRain && <RainEffect />}
-          </Fragment>
+          </div>
         )
       }
       )}

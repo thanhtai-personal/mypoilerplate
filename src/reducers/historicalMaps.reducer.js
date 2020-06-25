@@ -1,4 +1,5 @@
 import actionType from 'root/actionTypes'
+import tranquoctuan from 'root/data/historicalMaps/vietnam/heros/tranquoctuan'
 const initialState = {
   loadingMap: true,
   eventTimes: [
@@ -264,7 +265,9 @@ const initialState = {
   currentTime: -300,
   fetching: false,
   fetchingData: false,
-  timeLineData: {}
+  timeLineData: {},
+  celebrityData: tranquoctuan,
+  celebrityId: 'tranquoctuan'
 }
 
 export default (state = initialState, action) => {

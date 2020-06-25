@@ -1,0 +1,44 @@
+{
+  "id": "tranquoctuan",
+  "data": [
+    {
+      "key": 1,
+      "label": "Tên",
+      "value": "Trần Quốc Tuấn"
+    },
+    {
+      "key": 2,
+      "label": "Thụy Hiệu",
+      "value": "Nhân vũ"
+    },
+    {
+      "key": 3,
+      "label": "Tước Hiệu",
+      "value": "Hưng Đạo đại vương"
+    },
+    {
+      "key": 4,
+      "label": "Triều đại",
+      "value": "Nhà Trần"
+    },
+    {
+      "key": 5,
+      "label": "Năm sinh",
+      "value": "1228"
+    },
+    {
+      "key": 6,
+      "label": "Ngày mất",
+      "value": "20 tháng 8, 1300"
+    },
+    {
+      "key": 7,
+      "label": "Nơi An Táng",
+      "value": "Vườn An Lạc"
+    }
+  ],
+  "birthYear": 1228,
+  "deathYear": 1300,
+  "wiki": "https://vi.wikipedia.org/wiki/Tr%E1%BA%A7n_H%C6%B0ng_%C4%90%E1%BA%A1o",
+  "spcialName": "Nhân Vũ Hưng Đạo đại vương Trần Quốc Tuấn"
+}

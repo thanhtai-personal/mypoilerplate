@@ -1,28 +1,9 @@
 
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 import clsx from 'clsx'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-
-const loremText = `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form
-, by injected humour, or randomised words which don't look even slightly believable
-.\n If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
- All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
-  It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures
-, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition
-, injected humour, or non-characteristic words etc.nn`
-
-
-const replaceBreakLine = (string: string) => {
-  const newString = string.replace(/\n/g, '<br />')
-  const listStrings = newString.split('<br />')
-  return (
-    <h5>
-      {listStrings.map((str, index: number) => {
-        return (<Fragment key={`break-line-key-${index}`}>{str}<br /></Fragment>)
-      })}
-    </h5>
-  )
-}
+import { List, Divider, ListItemText, ListItem } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => {
   return createStyles({
@@ -32,7 +13,7 @@ const useStyles = makeStyles((theme) => {
       width: 'auto',
     },
     list: {
-      width: '50vw',
+      width: '30vw',
       backgroundColor: '#e6f2ff',
       height: '100vh',
       // overflow: 'scroll',
@@ -54,20 +35,41 @@ const useStyles = makeStyles((theme) => {
 
 const Panel = (props: any) => {
   const classes = useStyles()
-  const { anchor } = props
+  const { anchor, celebrityData } = props
+  const infos = celebrityData?.data || []
+  const listItems = infos.map((info: any, index: number) => (
+    <Fragment key={`${info.key}-${index}`}>
+      <ListItem button>
+        <ListItemText primary={info.label} secondary={info.value}  />
+      </ListItem>
+      <Divider />
+    </Fragment>
+  ))
+  const openWiki = (link: any) => { window.open(link, '_blank') }
   return (<div
     className={clsx(classes.list, {
       [classes.fullList]: anchor === 'top' || anchor === 'bottom',
     })}
-    role="presentation"
+    role='presentation'
   >
-    <h6>{replaceBreakLine(loremText)}</h6>
-    <h6>{replaceBreakLine(loremText)}</h6>
-    <h6>{replaceBreakLine(loremText)}</h6>
-    <h6>{replaceBreakLine(loremText)}</h6>
-    <h6>{replaceBreakLine(loremText)}</h6>
-    <h6>{replaceBreakLine(loremText)}</h6>
+    <List component="nav" className={classes.root} aria-label="mailbox folders">
+      {listItems}
+      <ListItem button key='wiki'>
+        <ListItemText primary={'WiKi'} secondary={celebrityData?.wiki} onClick={() => { openWiki(celebrityData?.wiki) }} />
+      </ListItem>
+      <ListItem button key='special-name'>
+        <h4 style={{ color: 'yellow'}}>{celebrityData?.specialName}</h4>
+      </ListItem>
+    </List>
   </div>)
 }
 
-export default Panel
+const mapState = (state: any) => ({
+  celebrityId: state.historicalMaps?.celebrityId,
+  celebrityData: state.historicalMaps?.celebrityData
+})
+
+const mapDispatch = {
+}
+
+export default connect(mapState, mapDispatch)(Panel)

@@ -14,21 +14,22 @@ type Anchor = 'top' | 'left' | 'bottom' | 'right'
 const defaultPeoples: any[] = [
   {
     name: 'Trần Quốc Tuấn',
-    id: 1
+    id: 'tranquoctuan'
   },
   {
     name: 'Trần Quốc Toản',
-    id: 2
+    id: 'tranquoctuan'
   },
   {
     name: 'Trần Thủ Độ',
-    id: 3
+    id: 'tranquoctuan'
   }
 ]
 
 const useStyles = makeStyles((theme) => {
   return createStyles({
     root: {
+      display: 'list-item'
     },
     personalCard: {
       border: 'outset 2px',
@@ -67,7 +68,7 @@ const useStyles = makeStyles((theme) => {
 });
 
 const PeopleView = (props: PeopleViewProps) => {
-  const { data } = props
+  // const { data } = props
   let _data = defaultPeoples
   const classes = useStyles()
   const [ isCollapseContent, setIsCollapseContent ] = useState(false)
@@ -87,13 +88,13 @@ const PeopleView = (props: PeopleViewProps) => {
   const list = (anchor: Anchor) => ( <Panel anchor={anchor} /> )
   return (
     <>
-       <ExpansionPanel square expanded={isCollapseContent} onChange={handleChangeColappse}>
-        <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
+       <ExpansionPanel className={classes.root} square expanded={isCollapseContent} onChange={handleChangeColappse}>
+        <ExpansionPanelSummary aria-controls='panel3d-content' id='panel3d-header'>
           <Typography>Danh nhân đất Việt</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          {_data.map((person: any) => (
-            <Card className={classes.personalCard} key={person.id} onClick={toggleDrawer('right', true, person.id)}>
+          {_data.map((person: any, index: number) => (
+            <Card className={classes.personalCard} key={`${person.id}-${index}`} onClick={toggleDrawer('right', true, person.id)}>
               <CardContent className={classes.personalCardContent}>
                 <h5>{person.name}</h5>
               </CardContent>
