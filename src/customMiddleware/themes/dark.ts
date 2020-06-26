@@ -50,7 +50,6 @@ export const darkTheme = createMuiTheme({
     },
     MuiTypography: {
       root: {
-        color: 'white'
       }
     },
     MuiExpansionPanel: {

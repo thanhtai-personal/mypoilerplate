@@ -5,6 +5,8 @@ import { CardContent, Typography, Card,
 } from '@material-ui/core'
 import Panel from './panel'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
+import appRoutesPath from 'root/appRoutes'
 
 interface PeopleViewProps {
   data: any
@@ -65,7 +67,7 @@ const useStyles = makeStyles((theme) => {
       }
     },
   })
-});
+})
 
 const PeopleView = (props: PeopleViewProps) => {
   // const { data } = props
@@ -83,7 +85,7 @@ const PeopleView = (props: PeopleViewProps) => {
   const toggleDrawer = (anchor: Anchor, open: boolean, data: any) => (
     event: React.KeyboardEvent | React.MouseEvent,
   ) => {
-    setPanel({ ...panel, [anchor]: open });
+    setPanel({ ...panel, [anchor]: open })
   }
   const list = (anchor: Anchor) => ( <Panel anchor={anchor} /> )
   return (
@@ -100,6 +102,11 @@ const PeopleView = (props: PeopleViewProps) => {
               </CardContent>
             </Card>
           ))}
+          <Card className={classes.personalCard} key={`additional-card`}>
+            <CardContent className={classes.personalCardContent}>
+              <Link to={appRoutesPath.createCelebrity}><h5>Thêm danh nhân</h5></Link>
+            </CardContent>
+          </Card>
         </ExpansionPanelDetails>
       </ExpansionPanel>
       {(['left', 'right', 'top', 'bottom'] as Anchor[]).map((anchor) => (

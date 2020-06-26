@@ -13,7 +13,7 @@ const RegisterContainer = React.lazy(() => import('root/containers/register'))
 const VietMapContainer = React.lazy(() => import('root/containers/vietmap'))
 const HistoricalMapsContainer = React.lazy(() => import('root/containers/historicalMaps'))
 const AboutMeContainer = React.lazy(() => import('root/containers/cv'))
-const DashboardContainer = React.lazy(() => import('root/containers/historicalMaps/dashboard'))
+const AddCelebrityContainer = React.lazy(() => import('root/containers/historicalMaps/addCelebrity'))
 
 const publicRoute = [
   {
@@ -53,16 +53,16 @@ const publicRoute = [
     layout: { header: CVHeader }
   },
   {
-    path: appRoutesPath.historicalDashboard,
-    component: makeSuspenseComponent(DashboardContainer),
+    path: appRoutesPath.createCelebrity,
+    component: makeSuspenseComponent(AddCelebrityContainer),
     isExact: false,
-    layout: { }
+    layout: { header: HeaderComponent }
   }
 ]
 
 const privateRoute = [
   {
-    path: appRoutesPath.dashboard,
+    path: appRoutesPath.createCelebrity,
     component: () => <div>test</div>,
     isExact: false,
     layout: { header: HeaderComponent } //{ header: Header, footer: Footer }

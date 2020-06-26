@@ -2,16 +2,16 @@ import React from 'react'
 import { Container, CssBaseline } from '@material-ui/core'
 import { connect } from 'react-redux'
 import TextRingAnimationLoading from 'root/components/commons/loadingAnimations/textRingAnimation'
-import HistorycalDashboardComponent from 'root/components/historicalMaps/dashboard'
+import AddCelebrityComponent from 'root/components/historicalMaps/celebrity/add'
 
-interface HistorycalDashboardProps {
+interface AddCelebrityProps {
   lang: any
 }
-interface HistorycalDashboardState {
+interface AddCelebrityState {
   loadingAnimation: Boolean
 }
 
-class HistorycalDashboardContainer extends React.PureComponent<HistorycalDashboardProps, HistorycalDashboardState> {
+class AddCelebrityContainer extends React.PureComponent<AddCelebrityProps, AddCelebrityState> {
   constructor(props: any) {
     super(props)
     this.state = { loadingAnimation: true }
@@ -28,7 +28,7 @@ class HistorycalDashboardContainer extends React.PureComponent<HistorycalDashboa
     return (
       <Container maxWidth='lg'>
         <CssBaseline />
-        <HistorycalDashboardComponent text={this.props.lang?.historicalMapsContainer} />
+        <AddCelebrityComponent text={this.props.lang?.historicalMapsContainer} />
       </Container>)
   }
 }
@@ -39,4 +39,4 @@ const mapStateToProps = (state: RootState) => ({})
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(HistorycalDashboardContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AddCelebrityContainer)

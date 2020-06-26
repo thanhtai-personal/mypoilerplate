@@ -1,4 +1,4 @@
 export default {
   historicalMaps: '/nationalhistory',
-  historicalDashboard: '/nationalhistory-dashboard'
+  createCelebrity: '/nationalhistory-create-celebrity'
 }
