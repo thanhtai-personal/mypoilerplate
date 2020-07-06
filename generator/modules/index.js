@@ -7,7 +7,7 @@ const cvModule = require('./cv')
 module.exports = {
   defaultModule,
   authenFeature,
-  vietmapModule,
-  historicalmapModule,
-  cvModule
+  // vietmapModule,
+  // historicalmapModule,
+  // cvModule
 }
